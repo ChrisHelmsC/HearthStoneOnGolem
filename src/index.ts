@@ -4,5 +4,5 @@ import { mainModule } from "process";
 
 main();
 function main() {
-    console.log("This is main");
+    console.log("Hello");
 }

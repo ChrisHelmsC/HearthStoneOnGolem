@@ -1,17 +1,20 @@
+import { Card } from "./card";
+import { Deck } from "./deck";
+import { Hero } from "./hero";
+
 export class Player {
-    name: string;
-    health: number;
+    name : string;
 
-    constructor(name : string, health : number) {
+    hero : Hero;
+    deck : Deck;
+    hand : Array<Card>;
+    board : Array<Card>; 
+
+    constructor(name : string, hero : Hero, deck : Deck) {
         this.name = name;
-        this.health = health;
-    }
-
-    public loseHealth(healthLost : number) {
-        this.health -= healthLost;
-    }
-
-    public gainHealth(healthGained: number) {
-        this.health += healthGained;
-    }
+        this.hero = hero;
+        this.deck = deck;
+        this.hand = new Array<Card>();
+        this.board = new Array<Card>();
+    }ßß
 }
