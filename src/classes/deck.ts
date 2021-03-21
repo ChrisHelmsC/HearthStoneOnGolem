@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Card } from "../classes/card";
+import { Card } from "./cards/card";
 
 export class Deck {
 

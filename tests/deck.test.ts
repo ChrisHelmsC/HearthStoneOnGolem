@@ -1,4 +1,4 @@
-import { Card } from '../src/classes/card';
+import { Card } from '../src/classes/cards/card';
 import { assert } from "chai"
 import { Deck } from '../src/classes/deck';
 
@@ -6,7 +6,7 @@ let basicCards : Array<Card>;
 let basicDeck : Deck;
 
 beforeEach(() => {
-    basicCards = [new Card('a'), new Card('b'), new Card('c'), new Card('d')];
+    basicCards = [new Card('a', 1), new Card('b', 1), new Card('c', 1), new Card('d', 1)];
     basicDeck = new Deck(basicCards);
 });
 
@@ -82,7 +82,7 @@ describe('Deck Class Testing', () => {
     });
 
     it('should add a card to the top of the deck', () => {
-        const card = new Card(' a new card ');
+        const card = new Card(' a new card ', 1);
         basicDeck.addToTop(card);
 
         assert.equal(card, basicDeck.peek());
