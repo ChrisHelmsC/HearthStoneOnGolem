@@ -1,4 +1,5 @@
 export interface Fighter {
+    name: string;
     hitpoints : number;
     baseDamage : number;
 

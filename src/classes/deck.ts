@@ -62,4 +62,8 @@ export class Deck {
     public getCards() {
         return this.cards.map(card => card);
     }
+
+    public isEmpty() {
+        return this.size() == 0;
+    }
 }
