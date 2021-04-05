@@ -1,4 +1,5 @@
 import cardCollection from "./cards/data/cardexamples";
+import { KoboldGeomancer } from "./cards/data/kobold.geomancer.card";
 import { SpellCard } from "./cards/spellcard";
 import { Deck } from "./deck";
 import { Hero } from "./hero";
@@ -21,13 +22,18 @@ export class Game {
         const heroOne = new Hero('HeroOne', this.PLAYER_HEALTH, 0, 0);
         const heroTwo = new Hero('HeroTwo', this.PLAYER_HEALTH, 0, 0);
 
+        //Add in kobold geomancer as test
+        const kobold = new KoboldGeomancer();
+        cardCollection.push(kobold)
+
         //Create two decks
         const deckOne = new Deck(Array.from(cardCollection));
         const deckTwo = new Deck(Array.from(cardCollection.reverse()));
 
         //Two players, each with a hero and a deck start at 30 health, add to player array
-        const playerOne = new Player('Player One', heroOne, deckOne, 1)
-        const playerTwo = new Player('Player Two', heroTwo, deckTwo, 1)
+        const playerOne = new Player('Player One', heroOne, deckOne, 1, 0)
+        const playerTwo = new Player('Player Two', heroTwo, deckTwo, 1, 0)
+        kobold.setPlayer(playerTwo);    //Testing kobold geomancer
         this.players.push(playerOne);
         this.players.push(playerTwo);
         console.log(playerOne.name + ' Deck: \n' + new CardWriter(playerOne.getDeck().getCards()).createCardString());

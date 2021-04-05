@@ -8,9 +8,8 @@ const stoneTuskBoar = new MonsterCard('Stonetusk Boar', 1, 1, 1, CardType.Beast)
 const bloodfenRaptor = new MonsterCard('Bloodfen Raptor', 2, 2, 3, CardType.Beast);
 const acidicSwampOoze = new MonsterCard('Acidic Swamp Ooze', 2, 2, 3, CardType.None);
 const bluegillWarrior = new MonsterCard('Bluegill Warrior', 2, 1, 2, CardType.Murloc);
-const koboldGeomancer = new MonsterCard('Kobold Geomancer', 2, 2, 2, CardType.None);
 
-const cardCollection = [wisp, koboldGeomancer, blazingBattlemage,  bluegillWarrior, stoneTuskBoar, bloodfenRaptor,
+const cardCollection = [wisp, blazingBattlemage,  bluegillWarrior, stoneTuskBoar, bloodfenRaptor,
     acidicSwampOoze, murlocRaider ];
 export default cardCollection;
 

@@ -12,8 +12,9 @@ export class Player {
     private board : Board; 
     private totalMana : number;
     private availableMana : number;
+    private spellDamage : number;
 
-    constructor(name : string, hero : Hero, deck : Deck, totalMana : number) {
+    constructor(name : string, hero : Hero, deck : Deck, totalMana : number, spellDamage : number) {
         this.name = name;
         this.hero = hero;
         this.deck = deck;
@@ -21,6 +22,7 @@ export class Player {
         this.board = new Board;
         this.totalMana = totalMana;
         this.availableMana = totalMana;
+        this.spellDamage = spellDamage;
     }
 
     //Player draws n cards from their deck into their hand
@@ -68,6 +70,9 @@ export class Player {
         this.hand.splice(this.hand.indexOf(card), 1);
         this.board.playCard(card);
 
+        //Alert card that is has been played
+        card.play();
+
         //Subtract cost from available mana
         this.availableMana -= card.cost;
     }
@@ -91,6 +96,18 @@ export class Player {
     public increaseTotalMana(amount : number) {
         this.totalMana += amount;
         this.availableMana += amount;
+    }
+
+    public getSpellDamage() : number{
+        return this.spellDamage;
+    }
+
+    public increaseSpellDamage(amount : number) {
+        this.spellDamage += amount;
+    }
+
+    public decreaseSpellDamage(amount : number) {
+        this.spellDamage = Math.max(this.spellDamage - amount, 0);
     }
 
     public getHero() {

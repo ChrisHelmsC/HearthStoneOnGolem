@@ -40,6 +40,9 @@ export class MonsterCard extends Card implements Fighter {
         this.hitpoints -= damage;
     }
 
+    //Triggers when card is played from hand
+    public play() {}
+
     //Returns true if this monster is dead
     public isDead() {
         return this.hitpoints <= 0;
