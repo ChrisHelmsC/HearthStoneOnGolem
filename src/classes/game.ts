@@ -61,7 +61,6 @@ export class Game {
 
             //If a player died, end game
             if(this.isAPlayerDead()) {
-                console.log('Player has died after first players turn.')
                 break;
             }
 
