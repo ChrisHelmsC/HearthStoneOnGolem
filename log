@@ -1,0 +1,1011 @@
+
+> hearthstoneongolem@1.0.0 start
+> npm run build:live
+
+
+> hearthstoneongolem@1.0.0 build:live
+> nodemon --watch 'src/**/*.ts' --exec "ts-node" src/index.ts
+
+[33m[nodemon] 2.0.7[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): src/**/*.ts[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node src/index.ts`[39m
+Player One Deck: 
+[
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player Two Deck: 
+[
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player One will have the first turn, Player Two will start with the coin.
+Player One drew a Blazing Battlemage from their deck.
+Player One drew a Bluegill Warrior from their deck.
+Player One drew a Acidic Swamp Ooze from their deck.
+Hand: [
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Player Two drew a Voodoo Doctor from their deck.
+Player Two drew a Emerald Skytalon from their deck.
+Player Two drew a Stonetusk Boar from their deck.
+Player Two drew a Gurubashi Berserker from their deck.
+Hand: [
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+
+!!!!!!!!!!!!!! Starting a match !!!!!!!!!!!!!
+
+Player One is taking their turn.
+Player One drew a Gurubashi Berserker from their deck.
+Player One is playing monster: Blazing Battlemage
+The status for Player One is:
+Board: [
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Bloodfen Raptor from their deck.
+Player Two is playing monster: Voodoo Doctor
+Voodoo Doctor is giving 2 health to Player Two
+The status for Player One is:
+Board: [
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player One is taking their turn.
+Player One drew a Murloc Raider from their deck.
+Player One is playing monster: Bluegill Warrior
+Bluegill Warrior has rush and has no summoning sickness.
+Blazing Battlemage is attacking Voodoo Doctor for 2 damage.
+Voodoo Doctor is defending.
+Voodoo Doctor has taken 2 damage and has -1 hitpoints remaining
+Blazing Battlemage has taken 2 damage and has 0 hitpoints remaining
+Voodoo Doctor is dead and is being removed from the board.
+Blazing Battlemage is dead and is being removed from the board.
+Bluegill Warrior is attacking HeroTwo for 2 damage.
+Bluegill Warrior has taken 0 damage and has 1 hitpoints remaining
+The status for Player One is:
+Board: [
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Loot Hoarder from their deck.
+Player Two is playing monster: Bloodfen Raptor
+The status for Player One is:
+Board: [
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player One is taking their turn.
+Player One drew a Wisp from their deck.
+Player One is playing monster: Acidic Swamp Ooze
+Bluegill Warrior is attacking Bloodfen Raptor for 2 damage.
+Bloodfen Raptor is defending.
+Bloodfen Raptor has taken 2 damage and has 0 hitpoints remaining
+Bluegill Warrior has taken 3 damage and has -2 hitpoints remaining
+Bloodfen Raptor is dead and is being removed from the board.
+Bluegill Warrior is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: false
+]
+
+Hand: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Blazing Battlemage from their deck.
+Player Two is playing monster: Loot Hoarder
+The status for Player One is:
+Board: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: false
+]
+
+Hand: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player One is taking their turn.
+Player One drew a Stonetusk Boar from their deck.
+Player One is playing monster: Murloc Raider
+Acidic Swamp Ooze is attacking Loot Hoarder for 3 damage.
+Loot Hoarder is defending.
+Player Two drew a Kobold Geomancer from their deck.
+Loot Hoarder has died, which causes the player to draw 1 cards.
+Loot Hoarder has taken 3 damage and has -2 hitpoints remaining
+Acidic Swamp Ooze has taken 2 damage and has 0 hitpoints remaining
+Loot Hoarder is dead and is being removed from the board.
+Acidic Swamp Ooze is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Chillwind Yeti from their deck.
+Player Two is playing monster: Chillwind Yeti
+The status for Player One is:
+Board: [
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player One is taking their turn.
+Player One drew a Emerald Skytalon from their deck.
+Player One is playing monster: Gurubashi Berserker
+Murloc Raider is attacking Chillwind Yeti for 2 damage.
+Chillwind Yeti is defending.
+Chillwind Yeti has taken 2 damage and has 3 hitpoints remaining
+Murloc Raider has taken 4 damage and has -3 hitpoints remaining
+Murloc Raider is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 3 Base Damage: 4 Total Damage: 4 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Bluegill Warrior from their deck.
+Player Two is playing monster: Gurubashi Berserker
+Chillwind Yeti is attacking Gurubashi Berserker for 4 damage.
+Gurubashi Berserker is defending.
+Gurubashi Berserker took damage, and has had its damage increased by 3 for total of 5
+Gurubashi Berserker has taken 4 damage and has 4 hitpoints remaining
+Chillwind Yeti has taken 5 damage and has -2 hitpoints remaining
+Chillwind Yeti is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 4 Base Damage: 2 Total Damage: 5 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 8 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player One is taking their turn.
+Player One drew a Voodoo Doctor from their deck.
+Player One is playing monster: Stonetusk Boar
+Stonetusk Boar has rush and has no summoning sickness.
+Gurubashi Berserker is attacking Gurubashi Berserker for 5 damage.
+Gurubashi Berserker is defending.
+Gurubashi Berserker took damage, and has had its damage increased by 3 for total of 5
+Gurubashi Berserker has taken 5 damage and has 3 hitpoints remaining
+Gurubashi Berserker took damage, and has had its damage increased by 3 for total of 8
+Gurubashi Berserker has taken 5 damage and has -1 hitpoints remaining
+Gurubashi Berserker is dead and is being removed from the board.
+Stonetusk Boar is attacking Gurubashi Berserker for 1 damage.
+Gurubashi Berserker is defending.
+Gurubashi Berserker took damage, and has had its damage increased by 3 for total of 8
+Gurubashi Berserker has taken 1 damage and has 2 hitpoints remaining
+Stonetusk Boar has taken 8 damage and has -7 hitpoints remaining
+Stonetusk Boar is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 2 Base Damage: 2 Total Damage: 8 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Murloc Raider from their deck.
+Player Two is playing monster: Kobold Geomancer
+Kobold Geomancer is increasing spell damage by: 1
+Player Two now has spell damage of: 1
+Gurubashi Berserker is attacking HeroOne for 8 damage.
+Gurubashi Berserker took damage, and has had its damage increased by 3 for total of 11
+Gurubashi Berserker has taken 0 damage and has 2 hitpoints remaining
+The status for Player One is:
+Board: [
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 2 Base Damage: 2 Total Damage: 11 Sick: false
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Player One is taking their turn.
+Player One drew a Loot Hoarder from their deck.
+Player One is playing monster: Loot Hoarder
+The status for Player One is:
+Board: [
+	Name: Loot Hoarder Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Gurubashi Berserker Cost: 5 Hitpoints: 2 Base Damage: 2 Total Damage: 11 Sick: false
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Wisp from their deck.
+Player Two is playing monster: Bluegill Warrior
+Bluegill Warrior has rush and has no summoning sickness.
+Gurubashi Berserker is attacking Loot Hoarder for 11 damage.
+Loot Hoarder is defending.
+Player One drew a Bloodfen Raptor from their deck.
+Loot Hoarder has died, which causes the player to draw 1 cards.
+Loot Hoarder has taken 11 damage and has -10 hitpoints remaining
+Gurubashi Berserker took damage, and has had its damage increased by 3 for total of 14
+Gurubashi Berserker has taken 2 damage and has 0 hitpoints remaining
+Loot Hoarder is dead and is being removed from the board.
+Gurubashi Berserker is dead and is being removed from the board.
+Kobold Geomancer is attacking HeroOne for 2 damage.
+Kobold Geomancer has taken 0 damage and has 2 hitpoints remaining
+Bluegill Warrior is attacking HeroOne for 2 damage.
+Bluegill Warrior has taken 0 damage and has 1 hitpoints remaining
+The status for Player One is:
+Board: [
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: false
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Player One is taking their turn.
+Player One drew a Chillwind Yeti from their deck.
+Player One is playing monster: Chillwind Yeti
+The status for Player One is:
+Board: [
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 5 Base Damage: 4 Total Damage: 4 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: false
+	Name: Bluegill Warrior Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Player Two is taking their turn.
+Player Two drew a Acidic Swamp Ooze from their deck.
+Player Two is playing monster: Acidic Swamp Ooze
+Kobold Geomancer is attacking Chillwind Yeti for 2 damage.
+Chillwind Yeti is defending.
+Chillwind Yeti has taken 2 damage and has 3 hitpoints remaining
+Kobold Geomancer has taken 4 damage and has -2 hitpoints remaining
+Kobold Geomancer is dead and is being removed from the board.
+Bluegill Warrior is attacking Chillwind Yeti for 2 damage.
+Chillwind Yeti is defending.
+Chillwind Yeti has taken 2 damage and has 1 hitpoints remaining
+Bluegill Warrior has taken 4 damage and has -3 hitpoints remaining
+Bluegill Warrior is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+	Name: Chillwind Yeti Cost: 4 Hitpoints: 1 Base Damage: 4 Total Damage: 4 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: true
+]
+
+Deck: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+The status for Player Two is:
+Board: [
+	Name: Acidic Swamp Ooze Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: false
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+]
+
+Player One is taking their turn.
+Player One drew a Kobold Geomancer from their deck.
+Player One is playing monster: Bloodfen Raptor
+Chillwind Yeti is attacking Acidic Swamp Ooze for 4 damage.
+Acidic Swamp Ooze is defending.
+Acidic Swamp Ooze has taken 4 damage and has -2 hitpoints remaining
+Chillwind Yeti has taken 3 damage and has -2 hitpoints remaining
+Acidic Swamp Ooze is dead and is being removed from the board.
+Chillwind Yeti is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+	Name: Bloodfen Raptor Cost: 2 Hitpoints: 2 Base Damage: 3 Total Damage: 3 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+]
+
+Player Two is taking their turn.
+Player Two has taken 1 damage from having no cards, and has 12 health left.
+Player Two is playing monster: Emerald Skytalon
+Emerald Skytalon has rush and has no summoning sickness.
+Emerald Skytalon is attacking Bloodfen Raptor for 2 damage.
+Bloodfen Raptor is defending.
+Bloodfen Raptor has taken 2 damage and has 0 hitpoints remaining
+Emerald Skytalon has taken 3 damage and has -2 hitpoints remaining
+Bloodfen Raptor is dead and is being removed from the board.
+Emerald Skytalon is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+]
+
+Player One is taking their turn.
+Player One has taken 1 damage from having no cards, and has 2 health left.
+Player One is playing monster: Kobold Geomancer
+Kobold Geomancer is increasing spell damage by: 1
+Player One now has spell damage of: 1
+The status for Player One is:
+Board: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Stonetusk Boar Cost: 1 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+]
+
+Player Two is taking their turn.
+Player Two has taken 2 damage from having no cards, and has 10 health left.
+Player Two is playing monster: Stonetusk Boar
+Stonetusk Boar has rush and has no summoning sickness.
+Stonetusk Boar is attacking Kobold Geomancer for 1 damage.
+Kobold Geomancer is defending.
+Kobold Geomancer has taken 1 damage and has 1 hitpoints remaining
+Stonetusk Boar has taken 2 damage and has -1 hitpoints remaining
+Stonetusk Boar is dead and is being removed from the board.
+The status for Player One is:
+Board: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+]
+
+Player One is taking their turn.
+Player One has taken 2 damage from having no cards, and has 0 health left.
+Player One is playing monster: Emerald Skytalon
+Emerald Skytalon has rush and has no summoning sickness.
+Kobold Geomancer is attacking HeroTwo for 2 damage.
+Kobold Geomancer has taken 0 damage and has 1 hitpoints remaining
+Emerald Skytalon is attacking HeroTwo for 2 damage.
+Emerald Skytalon has taken 0 damage and has 1 hitpoints remaining
+The status for Player One is:
+Board: [
+	Name: Kobold Geomancer Cost: 2 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+	Name: Emerald Skytalon Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: false
+]
+
+Hand: [
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+	Name: Voodoo Doctor Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+]
+
+Deck: [
+]
+
+The status for Player Two is:
+Board: [
+]
+
+Hand: [
+	Name: Blazing Battlemage Cost: 1 Hitpoints: 2 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Murloc Raider Cost: 1 Hitpoints: 1 Base Damage: 2 Total Damage: 2 Sick: true
+	Name: Wisp Cost: 0 Hitpoints: 1 Base Damage: 1 Total Damage: 1 Sick: true
+]
+
+Deck: [
+]
+
+A player has died
+Turns passed: 10
+PlayerOne: 0 Player 2 : 6
+[32m[nodemon] clean exit - waiting for changes before restart[39m

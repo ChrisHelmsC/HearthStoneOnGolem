@@ -12,7 +12,11 @@ export class CardWriter {
         let cardString = '[\n';
         this.cards.forEach((card) => {
             if(card instanceof MonsterCard) {
-                cardString += '\t' + 'Name: ' + card.name + ' Cost: ' + card.cost + ' Hitpoints: ' + card.hitpoints + ' Sick: ' + card.summonSick + '\n';
+                cardString += '\t' + 'Name: ' + card.name + ' Cost: ' + card.cost + 
+                ' Hitpoints: ' + card.hitpoints + 
+                ' Base Damage: ' + card.baseDamage +
+                ' Total Damage: ' + card.totalDamage() +
+                ' Sick: ' + card.summonSick + '\n';
             }
         });
         cardString += ']\n';

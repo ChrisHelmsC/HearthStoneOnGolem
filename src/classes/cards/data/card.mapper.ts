@@ -3,8 +3,11 @@ import { AcidicSwampOoze } from "./acidic.swamp.ooze.card";
 import { BlazingBattlemage } from "./blazing.battlemage.card";
 import { BloodfenRaptor } from "./bloodfen.raptor.card";
 import { BluegillWarrior } from "./bluegill.warrior.card";
+import { ChillwindYeti } from "./chillwind.yeti.card";
 import { EmeraldSkytalon } from "./emerald.skytalon.card";
+import { GurubashiBerserker } from "./gurubashi.berserker.card";
 import { KoboldGeomancer } from "./kobold.geomancer.card";
+import { LootHoarder } from "./loot.hoarder.card";
 import { MurlocRaider } from "./murloc.raider.card";
 import { StoneTuskBoar } from "./stonetusk.boar.card";
 import { VoodooDoctor } from "./voodoo.doctor.card";
@@ -26,6 +29,9 @@ export class CardMapper {
         this.allCards[Wisp.name] = () => {return new Wisp();}
         this.allCards[VoodooDoctor.name] = () => {return new VoodooDoctor();}
         this.allCards[EmeraldSkytalon.name] = () => {return new EmeraldSkytalon()}
+        this.allCards[ChillwindYeti.name] = () => {return new ChillwindYeti()}
+        this.allCards[GurubashiBerserker.name] = () => {return new GurubashiBerserker()}
+        this.allCards[LootHoarder.name] = () => {return new LootHoarder()}
     }
 
     public getCardFromClass(cardName : string) : Card {

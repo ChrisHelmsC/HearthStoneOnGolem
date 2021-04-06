@@ -5,6 +5,7 @@ import { CardType } from "./cardtype";
 export class MonsterCard extends Card implements Fighter {
     hitpoints : number;
     baseDamage : number;
+    bonusDamage: number;
     type : CardType;
     fatigue : boolean;
     summonSick : boolean;
@@ -16,15 +17,17 @@ export class MonsterCard extends Card implements Fighter {
         this.type = type;
         this.fatigue = false;
         this.summonSick = true;
+
+        this.bonusDamage = 0;
     }
 
     public attack(defender : Fighter) {
-        console.log(this.name + ' is attacking ' + defender.name + ' for ' + this.baseDamage + ' damage.');
+        console.log(this.name + ' is attacking ' + defender.name + ' for ' + this.totalDamage() + ' damage.');
         defender.defend(this);
 
         //Take damage from defender
-        this.takeDamage(defender.baseDamage)
-        console.log(this.name + ' has taken ' + defender.baseDamage + ' damage and has ' + this.hitpoints + ' hitpoints remaining')
+        this.takeDamage(defender.totalDamage())
+        console.log(this.name + ' has taken ' + defender.totalDamage() + ' damage and has ' + this.hitpoints + ' hitpoints remaining')
         
 
         //Monster is now fatigued;
@@ -34,12 +37,15 @@ export class MonsterCard extends Card implements Fighter {
     public defend(attacker : Fighter) {
         console.log(this.name + ' is defending.')
         //Remove hitpoints
-        this.takeDamage(attacker.baseDamage);
-        console.log(this.name + ' has taken ' + attacker.baseDamage + ' damage and has ' + this.hitpoints + ' hitpoints remaining');
+        this.takeDamage(attacker.totalDamage());
+        console.log(this.name + ' has taken ' + attacker.totalDamage() + ' damage and has ' + this.hitpoints + ' hitpoints remaining');
     }
 
     public takeDamage(damage : number) {
         this.hitpoints -= damage;
+
+        //Handle any death effects
+        if(this.isDead()) this.die();
     }
 
     //Triggers when card is played from hand
@@ -49,6 +55,9 @@ export class MonsterCard extends Card implements Fighter {
     public isDead() {
         return this.hitpoints <= 0;
     }
+
+    //Should be called when this card dies
+    public die() {}
 
     isFatigued() {
         return this.fatigue;
@@ -72,5 +81,9 @@ export class MonsterCard extends Card implements Fighter {
 
     canAttack() {
         return !this.summonSick && !this.fatigue;
+    }
+
+    totalDamage(): number {
+        return this.baseDamage + this.bonusDamage;
     }
 }

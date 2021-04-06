@@ -5,6 +5,7 @@ export class Hero implements Fighter {
     hitpoints: number;
     armor : number;
     baseDamage: number;
+    bonusDamage: number;
 
     //TODO create hero powers
 
@@ -13,18 +14,20 @@ export class Hero implements Fighter {
         this.hitpoints = hitpoints;
         this.armor = armor;
         this.baseDamage = baseDamage;
+        
+        this.bonusDamage = 0;
     }
     
     public attack(defender: Fighter): void {
         defender.defend(this);
 
         //Take damage from defender
-        this.hitpoints -= defender.baseDamage;
+        this.hitpoints -= defender.totalDamage();
     }
 
     public defend(attacker: Fighter): void {
         //Take damage from attacker
-        this.takeDamage(attacker.baseDamage)
+        this.takeDamage(attacker.totalDamage())
     }
 
     public takeDamage(damage : number) {
@@ -51,5 +54,9 @@ export class Hero implements Fighter {
     //Returns true is the hero is dead, and false otherwise
     public isDead() {
         return this.hitpoints <= 0;
+    }
+
+    totalDamage(): number {
+        return this.baseDamage + this.bonusDamage;
     }
 }

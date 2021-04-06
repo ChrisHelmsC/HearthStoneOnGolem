@@ -13,6 +13,9 @@ import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
 import { VoodooDoctor } from "./cards/data/voodoo.doctor.card";
 import { EmeraldSkytalon } from "./cards/data/emerald.skytalon.card";
+import { ChillwindYeti } from "./cards/data/chillwind.yeti.card";
+import { GurubashiBerserker } from "./cards/data/gurubashi.berserker.card";
+import { LootHoarder } from "./cards/data/loot.hoarder.card";
 
 
 
@@ -26,23 +29,21 @@ export class Game {
     }
 
     public play() {
-        const cardCollection = [AcidicSwampOoze, EmeraldSkytalon, BlazingBattlemage, VoodooDoctor, BloodfenRaptor, BluegillWarrior, KoboldGeomancer,
-            MurlocRaider, StoneTuskBoar, Wisp];
+        const cardCollection = [AcidicSwampOoze, EmeraldSkytalon, BlazingBattlemage, VoodooDoctor, BloodfenRaptor, 
+            BluegillWarrior, KoboldGeomancer, MurlocRaider, StoneTuskBoar, Wisp, GurubashiBerserker, ChillwindYeti, LootHoarder];
 
         //Create generic heros, each with 30 health
         const heroOne = new Hero('HeroOne', this.PLAYER_HEALTH, 0, 0);
         const heroTwo = new Hero('HeroTwo', this.PLAYER_HEALTH, 0, 0);
-
-        
 
         //Two players, each with a hero and a deck start at 30 health, add to player array
         const playerOne = new Player('Player One', heroOne, 1, 0, 0)
         const playerTwo = new Player('Player Two', heroTwo, 1, 0, 0)
 
         //Create and set decks
-        const deckOne = new DeckBuilder(cardCollection, playerOne, playerTwo).getAsDeck();
+        const deckOne = new DeckBuilder(this.shuffle(cardCollection), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
-        const deckTwo = new DeckBuilder(Array.from(cardCollection.reverse()), playerTwo, playerOne).getAsDeck();
+        const deckTwo = new DeckBuilder(this.shuffle(cardCollection), playerTwo, playerOne).getAsDeck();
         playerTwo.setDeck(deckTwo);
 
         this.players.push(playerOne);
@@ -155,4 +156,24 @@ export class Game {
         console.log('Hand: ' + new CardWriter(player.getHand()).createCardString());
         console.log('Deck: ' + new CardWriter(player.getDeck().getCards()).createCardString());
     }
+
+    //Temporary shuffle while decks are made locally
+    private shuffle(array : Array<any>) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+      
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+      
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+      
+        return array;
+      }
 }

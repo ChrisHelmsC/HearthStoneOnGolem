@@ -5,7 +5,7 @@ import { MonsterCard } from "../monstercard";
 
 export class KoboldGeomancer extends MonsterCard implements PlayerModifier {
 
-    private player : Player;
+    player : Player;
     private readonly SPELL_DAMAGE_INCREASE = 1;
 
     constructor() {
