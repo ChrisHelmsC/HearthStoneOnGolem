@@ -5,15 +5,17 @@ import { CardType } from "./cardtype";
 export class MonsterCard extends Card implements Fighter {
     hitpoints : number;
     baseDamage : number;
-    type: CardType;
-    fatigue: boolean;
+    type : CardType;
+    fatigue : boolean;
+    summonSick : boolean;
 
     constructor(name : string, cost : number, hitpoints : number, baseDamage : number, type : CardType) {
         super(name, cost);
         this.hitpoints = hitpoints;
         this.baseDamage = baseDamage;
         this.type = type;
-        this.fatigue = true;
+        this.fatigue = false;
+        this.summonSick = true;
     }
 
     public attack(defender : Fighter) {
@@ -58,5 +60,17 @@ export class MonsterCard extends Card implements Fighter {
 
     resetFatigue() {
         this.fatigue = false;
+    }
+
+    removeSummonSickness() {
+        this.summonSick = false;
+    }
+
+    isSummonSick() {
+        return this.summonSick;
+    }
+
+    canAttack() {
+        return !this.summonSick && !this.fatigue;
     }
 }

@@ -16,7 +16,7 @@ import { CardWriter } from "./util/cardwriter";
 
 
 export class Game {
-    private readonly PLAYER_HEALTH = 14;
+    private readonly PLAYER_HEALTH = 9;
 
     players : Array<Player>;
 
@@ -120,7 +120,7 @@ export class Game {
         //If monsters are on field for player, attack
         if(currentPlayer.getBoard().getCards().length > 0) {
             //If opponent has monsters, attack them
-            const attackingMonsters = currentPlayer.getBoard().getUnFatiguedMonsters();
+            const attackingMonsters = currentPlayer.getBoard().getAttackReadyMonsters();
             let monstersToAttack = opponent.getBoard().getCards();
 
             attackingMonsters.forEach((monster) => {
@@ -135,6 +135,9 @@ export class Game {
                 }
             });
         }
+
+        //At the end of turn, remove summoning sickness for player's monsters
+        currentPlayer.getBoard().removeAllSummonSick();
     }
 
     private isAPlayerDead(){

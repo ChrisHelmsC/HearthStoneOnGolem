@@ -16,18 +16,12 @@ export class Board {
     }
 
     removeDeadCards() {
-        const deadCards = this.cards.filter((card) => {
+        this.cards.forEach((card) => {
             if(card.isDead()) {
                 console.log(card.name + ' is dead and is being removed from the board.');
-                return true;
+                this.cards.splice(this.cards.indexOf(card), 1);
             }
-            return false;
-        });
-
-        //Remove all dead cards
-        deadCards.forEach((deadCard) => {
-            this.cards.splice(this.cards.indexOf(deadCard, 1));
-        });
+        })
     }
 
     unFatigueAllMonsters() {
@@ -36,9 +30,9 @@ export class Board {
         })
     }
 
-    getUnFatiguedMonsters() {
+    getAttackReadyMonsters() {
         return this.cards.filter((card) => {
-            return card.isFatigued();
+            return card.canAttack();
         });
     }
 
@@ -46,5 +40,9 @@ export class Board {
         return this.cards;
     }
 
-
+    removeAllSummonSick() {
+        this.cards.forEach((card) => {
+            card.removeSummonSickness();
+        });
+    }
 }
