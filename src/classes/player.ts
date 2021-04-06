@@ -13,8 +13,9 @@ export class Player {
     private totalMana : number;
     private availableMana : number;
     private spellDamage : number;
+    private noCardDamage : number;
 
-    constructor(name : string, hero : Hero, totalMana : number, spellDamage : number) {
+    constructor(name : string, hero : Hero, totalMana : number, spellDamage : number, noCardDamage : number) {
         this.name = name;
         this.hero = hero;
         this.hand = new Array<Card>();
@@ -22,14 +23,21 @@ export class Player {
         this.totalMana = totalMana;
         this.availableMana = totalMana;
         this.spellDamage = spellDamage;
+        this.noCardDamage = noCardDamage;
     }
 
-    //Player draws n cards from their deck into their hand
+    //Player draws n cards from their deck into their hand. If they are out of cards, then they are hurt.
     public drawCards(num : number) {
-        this.deck.drawCards(num).forEach((card ) => {
-            console.log(this.name + ' drew a ' + card.name + ' from their deck.');
-            this.hand.push(card);
-        });
+        if(this.isOutOfCards()) {
+            this.noCardDamage += 1;
+            this.hero.takeDamage(this.noCardDamage);
+            console.log(this.name + " has taken " + this.noCardDamage + " damage from having no cards, and has " + this.hero.hitpoints + " health left.")
+        } else {
+            this.deck.drawCards(num).forEach((card ) => {
+                console.log(this.name + ' drew a ' + card.name + ' from their deck.');
+                this.hand.push(card);
+            });
+        }
     }
 
     public discardCards(num : number) {

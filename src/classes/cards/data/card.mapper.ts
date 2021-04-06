@@ -3,9 +3,11 @@ import { AcidicSwampOoze } from "./acidic.swamp.ooze.card";
 import { BlazingBattlemage } from "./blazing.battlemage.card";
 import { BloodfenRaptor } from "./bloodfen.raptor.card";
 import { BluegillWarrior } from "./bluegill.warrior.card";
+import { EmeraldSkytalon } from "./emerald.skytalon.card";
 import { KoboldGeomancer } from "./kobold.geomancer.card";
 import { MurlocRaider } from "./murloc.raider.card";
 import { StoneTuskBoar } from "./stonetusk.boar.card";
+import { VoodooDoctor } from "./voodoo.doctor.card";
 import { Wisp } from "./wisp.card";
 
 export class CardMapper {
@@ -22,6 +24,8 @@ export class CardMapper {
         this.allCards[MurlocRaider.name] = () => {return new MurlocRaider();}
         this.allCards[StoneTuskBoar.name] = () => {return new StoneTuskBoar();}
         this.allCards[Wisp.name] = () => {return new Wisp();}
+        this.allCards[VoodooDoctor.name] = () => {return new VoodooDoctor();}
+        this.allCards[EmeraldSkytalon.name] = () => {return new EmeraldSkytalon()}
     }
 
     public getCardFromClass(cardName : string) : Card {

@@ -11,6 +11,8 @@ import { SpellCard } from "./cards/spellcard";
 import { Hero } from "./hero";
 import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
+import { VoodooDoctor } from "./cards/data/voodoo.doctor.card";
+import { EmeraldSkytalon } from "./cards/data/emerald.skytalon.card";
 
 
 
@@ -24,7 +26,7 @@ export class Game {
     }
 
     public play() {
-        const cardCollection = [AcidicSwampOoze, BlazingBattlemage, BloodfenRaptor, BluegillWarrior, KoboldGeomancer,
+        const cardCollection = [AcidicSwampOoze, EmeraldSkytalon, BlazingBattlemage, VoodooDoctor, BloodfenRaptor, BluegillWarrior, KoboldGeomancer,
             MurlocRaider, StoneTuskBoar, Wisp];
 
         //Create generic heros, each with 30 health
@@ -34,8 +36,8 @@ export class Game {
         
 
         //Two players, each with a hero and a deck start at 30 health, add to player array
-        const playerOne = new Player('Player One', heroOne, 1, 0)
-        const playerTwo = new Player('Player Two', heroTwo, 1, 0)
+        const playerOne = new Player('Player One', heroOne, 1, 0, 0)
+        const playerTwo = new Player('Player Two', heroTwo, 1, 0, 0)
 
         //Create and set decks
         const deckOne = new DeckBuilder(cardCollection, playerOne, playerTwo).getAsDeck();
@@ -106,9 +108,10 @@ export class Game {
         currentPlayer.increaseTotalMana(1);
         currentPlayer.resetAvailableMana();
 
-        //Draw a card
+        //Attempt to draw a card
         currentPlayer.drawCards(1);
 
+        // MAKE THIS A STRATEGY ****************************************************************** //
         //Play highest possible card in hand if possible
         if(currentPlayer.getPlayableMonsterCards().length > 0) {
             currentPlayer.playMonsterCard(currentPlayer.getPlayableMonsterCards()[0]);
@@ -134,6 +137,7 @@ export class Game {
                 }
             });
         }
+        // MAKE THIS A STRATEGY ****************************************************************** //
 
         //At the end of turn, remove summoning sickness for player's monsters
         currentPlayer.getBoard().removeAllSummonSick();
