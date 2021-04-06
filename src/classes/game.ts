@@ -1,4 +1,4 @@
-import { DeckBuilder } from "./cards/card.builder";
+import { DeckBuilder } from "./cards/deck.builder";
 import { AcidicSwampOoze } from "./cards/data/acidic.swamp.ooze.card";
 import { BlazingBattlemage } from "./cards/data/blazing.battlemage.card";
 import { BloodfenRaptor } from "./cards/data/bloodfen.raptor.card";
@@ -8,7 +8,6 @@ import { MurlocRaider } from "./cards/data/murloc.raider.card";
 import { StoneTuskBoar } from "./cards/data/stonetusk.boar.card";
 import { Wisp } from "./cards/data/wisp.card";
 import { SpellCard } from "./cards/spellcard";
-import { Deck } from "./deck";
 import { Hero } from "./hero";
 import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
@@ -16,7 +15,7 @@ import { CardWriter } from "./util/cardwriter";
 
 
 export class Game {
-    private readonly PLAYER_HEALTH = 9;
+    private readonly PLAYER_HEALTH = 15;
 
     players : Array<Player>;
 
