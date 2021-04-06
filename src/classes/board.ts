@@ -1,5 +1,3 @@
-import { Card } from "./cards/card";
-import cardCollection from "./cards/data/cardexamples";
 import { MonsterCard } from "./cards/monstercard";
 
 export class Board {

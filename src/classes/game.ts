@@ -1,5 +1,12 @@
-import cardCollection from "./cards/data/cardexamples";
+import { DeckBuilder } from "./cards/card.builder";
+import { AcidicSwampOoze } from "./cards/data/acidic.swamp.ooze.card";
+import { BlazingBattlemage } from "./cards/data/blazing.battlemage.card";
+import { BloodfenRaptor } from "./cards/data/bloodfen.raptor.card";
+import { BluegillWarrior } from "./cards/data/bluegill.warrior.card";
 import { KoboldGeomancer } from "./cards/data/kobold.geomancer.card";
+import { MurlocRaider } from "./cards/data/murloc.raider.card";
+import { StoneTuskBoar } from "./cards/data/stonetusk.boar.card";
+import { Wisp } from "./cards/data/wisp.card";
 import { SpellCard } from "./cards/spellcard";
 import { Deck } from "./deck";
 import { Hero } from "./hero";
@@ -18,24 +25,28 @@ export class Game {
     }
 
     public play() {
+        const cardCollection = [AcidicSwampOoze, BlazingBattlemage, BloodfenRaptor, BluegillWarrior, KoboldGeomancer,
+            MurlocRaider, StoneTuskBoar, Wisp];
+
         //Create generic heros, each with 30 health
         const heroOne = new Hero('HeroOne', this.PLAYER_HEALTH, 0, 0);
         const heroTwo = new Hero('HeroTwo', this.PLAYER_HEALTH, 0, 0);
 
-        //Add in kobold geomancer as test
-        const kobold = new KoboldGeomancer();
-        cardCollection.push(kobold)
-
-        //Create two decks
-        const deckOne = new Deck(Array.from(cardCollection));
-        const deckTwo = new Deck(Array.from(cardCollection.reverse()));
+        
 
         //Two players, each with a hero and a deck start at 30 health, add to player array
-        const playerOne = new Player('Player One', heroOne, deckOne, 1, 0)
-        const playerTwo = new Player('Player Two', heroTwo, deckTwo, 1, 0)
-        kobold.setPlayer(playerTwo);    //Testing kobold geomancer
+        const playerOne = new Player('Player One', heroOne, 1, 0)
+        const playerTwo = new Player('Player Two', heroTwo, 1, 0)
+
+        //Create and set decks
+        const deckOne = new DeckBuilder(cardCollection, playerOne, playerTwo).getAsDeck();
+        playerOne.setDeck(deckOne);
+        const deckTwo = new DeckBuilder(Array.from(cardCollection.reverse()), playerTwo, playerOne).getAsDeck();
+        playerTwo.setDeck(deckTwo);
+
         this.players.push(playerOne);
         this.players.push(playerTwo);
+
         console.log(playerOne.name + ' Deck: \n' + new CardWriter(playerOne.getDeck().getCards()).createCardString());
         console.log(playerTwo.name + ' Deck: \n' + new CardWriter(playerTwo.getDeck().getCards()).createCardString());
 

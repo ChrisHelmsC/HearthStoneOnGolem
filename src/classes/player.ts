@@ -14,10 +14,9 @@ export class Player {
     private availableMana : number;
     private spellDamage : number;
 
-    constructor(name : string, hero : Hero, deck : Deck, totalMana : number, spellDamage : number) {
+    constructor(name : string, hero : Hero, totalMana : number, spellDamage : number) {
         this.name = name;
         this.hero = hero;
-        this.deck = deck;
         this.hand = new Array<Card>();
         this.board = new Board;
         this.totalMana = totalMana;
@@ -112,6 +111,10 @@ export class Player {
 
     public getHero() {
         return this.hero;
+    }
+
+    public setDeck(deck : Deck) {
+        this.deck = deck;
     }
 
     public getDeck() {
