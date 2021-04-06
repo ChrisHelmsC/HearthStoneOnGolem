@@ -1,23 +1,10 @@
 import { DeckBuilder } from "./cards/deck.builder";
-import { AcidicSwampOoze } from "./cards/data/acidic.swamp.ooze.card";
-import { BlazingBattlemage } from "./cards/data/blazing.battlemage.card";
-import { BloodfenRaptor } from "./cards/data/bloodfen.raptor.card";
-import { BluegillWarrior } from "./cards/data/bluegill.warrior.card";
-import { KoboldGeomancer } from "./cards/data/kobold.geomancer.card";
-import { MurlocRaider } from "./cards/data/murloc.raider.card";
-import { StoneTuskBoar } from "./cards/data/stonetusk.boar.card";
-import { Wisp } from "./cards/data/wisp.card";
 import { SpellCard } from "./cards/spellcard";
 import { Hero } from "./hero";
 import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
-import { VoodooDoctor } from "./cards/data/voodoo.doctor.card";
-import { EmeraldSkytalon } from "./cards/data/emerald.skytalon.card";
-import { ChillwindYeti } from "./cards/data/chillwind.yeti.card";
-import { GurubashiBerserker } from "./cards/data/gurubashi.berserker.card";
-import { LootHoarder } from "./cards/data/loot.hoarder.card";
-
-
+import { readFileSync } from "fs";
+import { InFileLayout } from "../util/in.file";
 
 export class Game {
     private readonly PLAYER_HEALTH = 15;
@@ -29,8 +16,6 @@ export class Game {
     }
 
     public play() {
-        const cardCollection = [AcidicSwampOoze, EmeraldSkytalon, BlazingBattlemage, VoodooDoctor, BloodfenRaptor, 
-            BluegillWarrior, KoboldGeomancer, MurlocRaider, StoneTuskBoar, Wisp, GurubashiBerserker, ChillwindYeti, LootHoarder];
 
         //Create generic heros, each with 30 health
         const heroOne = new Hero('HeroOne', this.PLAYER_HEALTH, 0, 0);
@@ -40,10 +25,11 @@ export class Game {
         const playerOne = new Player('Player One', heroOne, 1, 0, 0)
         const playerTwo = new Player('Player Two', heroTwo, 1, 0, 0)
 
-        //Create and set decks
-        const deckOne = new DeckBuilder(this.shuffle(cardCollection), playerOne, playerTwo).getAsDeck();
+        //Create and set decks from infile, shuffle for now
+        const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
+        const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
-        const deckTwo = new DeckBuilder(this.shuffle(cardCollection), playerTwo, playerOne).getAsDeck();
+        const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
         playerTwo.setDeck(deckTwo);
 
         this.players.push(playerOne);

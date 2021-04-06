@@ -2,16 +2,15 @@ import { Deck } from "../deck";
 import { Player } from "../player";
 import { Card } from "./card";
 import { CardMapper } from "./data/card.mapper";
-import { MonsterCard } from "./monstercard";
 
 export class DeckBuilder {
-    cardTypes : any;
+    cardNames : string[];
     player : Player;
     enemy : Player;
     cardMapper : CardMapper;
 
-    constructor(cardTypes : any, player : Player, enemy : Player) {
-        this.cardTypes = cardTypes;
+    constructor(cardNames : string[], player : Player, enemy : Player) {
+        this.cardNames = cardNames;
         this.player = player;
         this.enemy = enemy;
         this.cardMapper = new CardMapper();
@@ -21,8 +20,9 @@ export class DeckBuilder {
     public getAsDeck() : Deck{
         const createdCards  = new Array<Card>();
 
-        this.cardTypes.forEach((cardClass: any) => {
-            let currentCard : Card = this.cardMapper.getCardFromClass(cardClass.name);
+        this.cardNames.forEach((name: string) => {
+            console.log('Card name is ' + name)
+            let currentCard : Card = this.cardMapper.getCardFromClass(name);
 
             createdCards.push(currentCard);
 
