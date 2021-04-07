@@ -1,6 +1,6 @@
-import { Card } from '../src/classes/cards/card';
+import { Card } from '../classes/cards/card';
 import { assert } from "chai"
-import { Deck } from '../src/classes/deck';
+import { Deck } from '../classes/deck';
 
 let basicCards : Array<Card>;
 let basicDeck : Deck;

@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var card_1 = require("../src/classes/card");
+var card_1 = require("../classes/cards/card");
 var chai_1 = require("chai");
-var deck_1 = require("../src/classes/deck");
+var deck_1 = require("../classes/deck");
 var basicCards;
 var basicDeck;
 beforeEach(function () {
-    basicCards = [new card_1.Card('a'), new card_1.Card('b'), new card_1.Card('c'), new card_1.Card('d')];
+    basicCards = [new card_1.Card('a', 1), new card_1.Card('b', 1), new card_1.Card('c', 1), new card_1.Card('d', 1)];
     basicDeck = new deck_1.Deck(basicCards);
 });
 describe('Deck Class Testing', function () {
@@ -64,7 +64,7 @@ describe('Deck Class Testing', function () {
         chai_1.assert.equal(numToDiscard, discarded);
     });
     it('should add a card to the top of the deck', function () {
-        var card = new card_1.Card(' a new card ');
+        var card = new card_1.Card(' a new card ', 1);
         basicDeck.addToTop(card);
         chai_1.assert.equal(card, basicDeck.peek());
     });
