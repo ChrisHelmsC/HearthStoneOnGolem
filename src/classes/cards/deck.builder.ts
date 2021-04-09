@@ -21,7 +21,6 @@ export class DeckBuilder {
         const createdCards  = new Array<Card>();
 
         this.cardNames.forEach((name: string) => {
-            console.log('Card name is ' + name)
             let currentCard : Card = this.cardMapper.getCardFromClass(name);
 
             createdCards.push(currentCard);

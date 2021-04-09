@@ -1,6 +1,9 @@
 FROM node:15.13.0-slim
 WORKDIR /usr/src/app
 
+# Define required volumes
+VOLUME /golem/input /golem/output
+
 #Install node dependencies
 COPY package*.json ./
 RUN npm install
@@ -11,5 +14,5 @@ COPY . .
 #Compile typescript to JS
 RUN npm run build
 
-#Run js server
-CMD [ "node", "./dist/index.js" ]
+#Temporary file copy to in volume
+COPY ./in.file.json /golem/input
