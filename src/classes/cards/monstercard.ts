@@ -30,7 +30,7 @@ export class MonsterCard extends Card implements Fighter {
         console.log(this.name + ' has taken ' + defender.totalDamage() + ' damage and has ' + this.hitpoints + ' hitpoints remaining')
         
 
-        //Monster is now fatigued;
+        //TODO Monster is now fatigued;
         
     }
 
