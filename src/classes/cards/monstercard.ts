@@ -1,6 +1,7 @@
 import { Fighter } from "../fighter";
 import { Card } from "./card";
 import { CardType } from "./cardtype";
+import { globalEvent } from "@billjs/event-emitter"
 
 export class MonsterCard extends Card implements Fighter {
     hitpoints : number;
@@ -22,6 +23,7 @@ export class MonsterCard extends Card implements Fighter {
     }
 
     public attack(defender : Fighter) {
+        globalEvent.fire("attack", this.name + " is attacking!");
         console.log(this.name + ' is attacking ' + defender.name + ' for ' + this.totalDamage() + ' damage.');
         defender.defend(this);
 

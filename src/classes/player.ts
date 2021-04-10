@@ -3,6 +3,7 @@ import { Card } from "./cards/card";
 import { MonsterCard } from "./cards/monstercard";
 import { Deck } from "./deck";
 import { Hero } from "./hero";
+import { globalEvent } from '@billjs/event-emitter'
 
 export class Player {
     public  name : string;
@@ -31,15 +32,17 @@ export class Player {
         if(this.isOutOfCards()) {
             this.noCardDamage += 1;
             this.hero.takeDamage(this.noCardDamage);
-            console.log(this.name + " has taken " + this.noCardDamage + " damage from having no cards, and has " + this.hero.hitpoints + " health left.")
+            globalEvent.fire('card_fatigue_damage', {player : this});
         } else {
-            this.deck.drawCards(num).forEach((card ) => {
-                console.log(this.name + ' drew a ' + card.name + ' from their deck.');
+            const drawnCards = this.deck.drawCards(num);
+            drawnCards.forEach((card ) => {
                 this.hand.push(card);
             });
+            globalEvent.fire('cards_drawn', {player : this, drawnCards : drawnCards});
         }
     }
 
+    //TODO rename to discardCardsFromDeck
     public discardCards(num : number) {
         this.deck.discardCards(num);
     }
@@ -73,7 +76,9 @@ export class Player {
     }
 
     public playMonsterCard(card : MonsterCard) {
-        console.log(this.name + ' is playing monster: ' + card.name);
+        globalEvent.fire("card_played", {player : this, card: card});
+        globalEvent.fire("monster_card_played", {player : this, card: card});
+        
         this.hand.splice(this.hand.indexOf(card), 1);
         this.board.playCard(card);
 
@@ -90,6 +95,10 @@ export class Player {
 
     public getBoard() {
         return this.board;
+    }
+
+    public getTotalMana() {
+        return this.totalMana;
     }
 
     public getAvailableMana() {
@@ -131,5 +140,24 @@ export class Player {
     
     public getHand() {
         return this.hand;
+    }
+
+    public getNoCardDamage() {
+        return this.noCardDamage;
+    }
+
+    //Handles mana reset and increase at beginning of turn
+    public resetAndIncreaseMana() {
+        //Event to track mana used last turn
+        globalEvent.fire("record_mana_used", {player: this});
+
+        //Increase players mana by 1 and reset available
+        this.increaseTotalMana(1);
+        this.resetAvailableMana();
+
+        console.log(this.name + " mana has been increased to " + this.totalMana);
+
+        //Event to track total mana during game
+        globalEvent.fire("record_mana_available", {player : this});
     }
 }

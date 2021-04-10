@@ -5,11 +5,14 @@ import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
 import { fstat, readFileSync, writeFile, writeFileSync } from "fs";
 import { InFileLayout } from "../util/in.file";
+import { LoggingHandler } from "../logging/logging.handler";
+import { globalEvent } from "@billjs/event-emitter"
 
 export class Game {
-    private readonly PLAYER_HEALTH = 15;
+    private readonly PLAYER_HEALTH = 25;
 
     players : Array<Player>;
+    logger : LoggingHandler;
 
     constructor() {
         this.players = new Array<Player>();
@@ -25,8 +28,12 @@ export class Game {
         const playerOne = new Player('Player One', heroOne, 1, 0, 0)
         const playerTwo = new Player('Player Two', heroTwo, 1, 0, 0)
 
+        //Create the logger for tracking game stats
+        this.logger = new LoggingHandler(playerOne, playerTwo);
+
         //Create and set decks from infile, shuffle for now
-        const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
+        //const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
+        const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
         const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
@@ -53,10 +60,10 @@ export class Game {
 
         //Players take turns until one dies 
         console.log('\n!!!!!!!!!!!!!! Starting a match !!!!!!!!!!!!!\n');
-        let someoneIsDead = false;
-        let turnsPassed = 0;
+        let turnCount = 1;
 
-        while(!someoneIsDead && turnsPassed < 300) {
+        while(turnCount < 300) {
+            turnCount++;
             //Let first player take their turn
             this.takeTurn(firstTurnPlayer, secondTurnPlayer);
 
@@ -70,16 +77,24 @@ export class Game {
 
             //Let second player take turn
             this.takeTurn(secondTurnPlayer, firstTurnPlayer);
-            turnsPassed++;
 
-            this.printPlayerStatus(firstTurnPlayer);
             this.printPlayerStatus(secondTurnPlayer);
+            this.printPlayerStatus(firstTurnPlayer);
+
+            //If a player died, end game
+            if(this.isAPlayerDead()) {
+                break;
+            }
         }
+
+        //Calculate any final game stats
+        globalEvent.fire('final_turn_count', turnCount);
 
         //Winner is determined
         console.log('A player has died');
-        console.log('Turns passed: ' + turnsPassed);
+        console.log('Turns passed: ' + turnCount);
         console.log('PlayerOne: ' + firstTurnPlayer.getHero().hitpoints + ' Player 2 : ' + secondTurnPlayer.getHero().hitpoints);
+        console.log('Game stats were: ' + JSON.stringify(this.logger.gameData));
     }
     
     /*
@@ -89,10 +104,10 @@ export class Game {
             Attack opponent
     */
     private takeTurn(currentPlayer : Player, opponent : Player) {
-        console.log(currentPlayer.name + ' is taking their turn.');
-        //Increase players mana by 1 and reset available
-        currentPlayer.increaseTotalMana(1);
-        currentPlayer.resetAvailableMana();
+        globalEvent.fire("begin_turn", {currentPlayer : currentPlayer, opponent : opponent})
+
+        //Increase and reset player mana
+        currentPlayer.resetAndIncreaseMana();
 
         //Attempt to draw a card
         currentPlayer.drawCards(1);
@@ -137,6 +152,7 @@ export class Game {
 
     private printPlayerStatus(player : Player) {
         console.log('The status for ' + player.name + ' is:');
+        console.log('Health: ' + player.getHero().hitpoints);
         console.log('Board: ' + new CardWriter(player.getBoard().getCards()).createCardString());
         console.log('Hand: ' + new CardWriter(player.getHand()).createCardString());
         console.log('Deck: ' + new CardWriter(player.getDeck().getCards()).createCardString());
