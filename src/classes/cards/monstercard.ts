@@ -23,24 +23,21 @@ export class MonsterCard extends Card implements Fighter {
     }
 
     public attack(defender : Fighter) {
-        globalEvent.fire("attack", this.name + " is attacking!");
-        console.log(this.name + ' is attacking ' + defender.name + ' for ' + this.totalDamage() + ' damage.');
+        globalEvent.fire("monster_attacking", {attacker : this, defender: defender});
         defender.defend(this);
 
         //Take damage from defender
-        this.takeDamage(defender.totalDamage())
-        console.log(this.name + ' has taken ' + defender.totalDamage() + ' damage and has ' + this.hitpoints + ' hitpoints remaining')
-        
+        this.takeDamage(defender.totalDamage())        
 
         //TODO Monster is now fatigued;
         
     }
 
     public defend(attacker : Fighter) {
-        console.log(this.name + ' is defending.')
+        globalEvent.fire("monster_defending", {attacker: attacker, defender: this});
+
         //Remove hitpoints
         this.takeDamage(attacker.totalDamage());
-        console.log(this.name + ' has taken ' + attacker.totalDamage() + ' damage and has ' + this.hitpoints + ' hitpoints remaining');
     }
 
     public takeDamage(damage : number) {

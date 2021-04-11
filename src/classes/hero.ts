@@ -1,4 +1,5 @@
 import { Fighter } from "./fighter";
+import { globalEvent } from "@billjs/event-emitter";
 
 export class Hero implements Fighter {
     name : string;
@@ -28,6 +29,7 @@ export class Hero implements Fighter {
     public defend(attacker: Fighter): void {
         //Take damage from attacker
         this.takeDamage(attacker.totalDamage())
+        globalEvent.fire("hero_defending", {attacker : attacker, defender: this});
     }
 
     public takeDamage(damage : number) {

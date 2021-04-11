@@ -2,6 +2,9 @@ import { PlayerStats } from "./player.stats";
 import { globalEvent } from "@billjs/event-emitter"
 import { Player } from "../classes/player";
 import { Card } from "../classes/cards/card";
+import { MonsterCard } from "../classes/cards/monstercard";
+import { Hero } from "../classes/hero";
+import { Fighter } from "../classes/fighter";
 
 export class LoggingHandler {
     gameData  : {[ key :string] : PlayerStats} = {};
@@ -63,7 +66,37 @@ export class LoggingHandler {
             this.gameData[player.name].cardsPlayed += 1;
         })
 
-        globalEvent.on('attack', evt => {console.log("event is: " + evt.data)});
+        globalEvent.on("cards_discarded_from_hand", event => {
+            const player : Player = event.data.player;
+            const discardedCards : Card[] = event.data.discardedCards;
+
+            this.gameData[player.name].cardsDiscarded += discardedCards.length;
+        })
+
+        globalEvent.on('monster_attacking', event => {
+            const attacker : MonsterCard = event.data.attacker;
+            const defender : Fighter = event.data.defender;
+
+            //Use player turn since we can't get access to player here
+            const currentGameData = this.gameData[this.currentPlayer.name];
+
+            //Damage MY monsters have done, damage MY monsters have taken
+            currentGameData.monsterDamageDone += attacker.totalDamage();
+            currentGameData.monsterDamageTaken += defender.totalDamage();
+
+            console.log(attacker + ' is attacking ' + defender.name + ' for ' + attacker.totalDamage() + ' damage.' 
+            + defender.name + " will do " + defender.totalDamage() + " to " + attacker.name + ".");
+        });
+
+        globalEvent.on('monster_defending', event => {
+            const attacker : MonsterCard = event.data.attacker;
+            const defender : MonsterCard = event.data.defender;
+
+            //Use player turn since we cant get access to player here
+            const currentGameData = this.gameData[this.opponent.name];
+            currentGameData.monsterDamageDone += defender.totalDamage();
+            currentGameData.monsterDamageTaken += attacker.totalDamage();
+        })
 
         //Card played event
         globalEvent.on("monster_card_played", event => {
@@ -72,6 +105,26 @@ export class LoggingHandler {
 
             this.gameData[player.name].monstersPlayed += 1;
             console.log(player.name + ' is playing monster: ' + card.name);
+        })
+
+        //Track monsters that died
+        globalEvent.on("monster_died", event => {
+            const player : Player = event.data.player;
+            const deadCards : Array<MonsterCard> = event.data.deadCards;
+
+            this.gameData[player.name].monstersLost += deadCards.length;
+            this.gameData
+        });
+
+        //Handle hero being attacker
+        globalEvent.on('hero_defending', event => {
+            const attacker : Fighter = event.data.attacker;
+            const defender : Hero = event.data.defender;
+
+            //Use player turn since we cant get access to player here
+            const currentGameData = this.gameData[this.opponent.name];
+            //currentGameData.heroDamageDone += defender.totalDamage();
+            currentGameData.heroDamageTaken += attacker.totalDamage();
         })
 
         //Handle card causing hero to gain health

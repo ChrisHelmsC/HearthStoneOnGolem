@@ -4,6 +4,7 @@ import { MonsterCard } from "./cards/monstercard";
 import { Deck } from "./deck";
 import { Hero } from "./hero";
 import { globalEvent } from '@billjs/event-emitter'
+import { range } from "lodash";
 
 export class Player {
     public  name : string;
@@ -39,11 +40,35 @@ export class Player {
                 this.hand.push(card);
             });
             globalEvent.fire('cards_drawn', {player : this, drawnCards : drawnCards});
+
+            //Discard any cards that go past hand limit
+            const CARDS_IN_HAND_LIMIT = 10;
+            const discardedCards = this.discardCardsFromHand(this.hand.length - CARDS_IN_HAND_LIMIT);
+            if(discardedCards.length > 0) {
+                console.log(this.name + " was forced to discard " + discardedCards.length + " cards due to hand size limitations.");
+            }
+            
         }
     }
 
+    public discardCardsFromHand(num : number)  : Card[]{
+        //If no cards to discard, exit
+        if(num <= 0) return [];
+
+        const discardedCards :  Card[] = [];
+        //TODO this 
+        for(let i = 0; i < num; i++) {
+            discardedCards.push(this.hand.pop());
+        }
+
+        //Fire event for any discarded cards
+        globalEvent.fire("cards_discarded_from_hand", {player: this, discardedCards: discardedCards});
+
+        return discardedCards;
+    }
+
     //TODO rename to discardCardsFromDeck
-    public discardCards(num : number) {
+    public discardCardsFromDeck(num : number) {
         this.deck.discardCards(num);
     }
 
@@ -159,5 +184,11 @@ export class Player {
 
         //Event to track total mana during game
         globalEvent.fire("record_mana_available", {player : this});
+    }
+
+    public removeDeadCardsFromBoard() {
+        const deadCards = this.board.removeDeadCards();
+
+        globalEvent.fire("monster_died", {player: this, deadCards: deadCards});
     }
 }

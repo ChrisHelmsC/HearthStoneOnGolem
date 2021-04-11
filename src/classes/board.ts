@@ -15,13 +15,16 @@ export class Board {
         this.cards.splice(this.cards.indexOf(card), 1);
     }
 
-    removeDeadCards() {
+    removeDeadCards() : Array<MonsterCard>{
+        const removedCards : Array<MonsterCard> = new Array();
         this.cards.forEach((card) => {
             if(card.isDead()) {
                 console.log(card.name + ' is dead and is being removed from the board.');
-                this.cards.splice(this.cards.indexOf(card), 1);
+                removedCards.push(this.cards.splice(this.cards.indexOf(card), 1)[0]);
             }
         })
+
+        return removedCards;
     }
 
     unFatigueAllMonsters() {
