@@ -25,15 +25,15 @@ export class Game {
         const heroTwo = new Hero('HeroTwo', this.PLAYER_HEALTH, 0, 0);
 
         //Two players, each with a hero and a deck start at 30 health, add to player array
-        const playerOne = new Player('Player One', heroOne, 1, 0, 0)
-        const playerTwo = new Player('Player Two', heroTwo, 1, 0, 0)
+        const playerOne = new Player('PlayerOne', heroOne, 1, 0, 0)
+        const playerTwo = new Player('PlayerTwo', heroTwo, 1, 0, 0)
 
         //Create the logger for tracking game stats
         this.logger = new LoggingHandler(playerOne, playerTwo);
 
         //Create and set decks from infile, shuffle for now
-        //const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
-        const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
+        const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
+        //const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
         const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
@@ -88,13 +88,19 @@ export class Game {
         }
 
         //Calculate any final game stats
-        globalEvent.fire('final_turn_count', turnCount);
+        globalEvent.fire('final_turn_count', {turns: turnCount});
 
         //Winner is determined
+        this.determineWinner(playerOne, playerTwo);
+
+        //Info logged
         console.log('A player has died');
         console.log('Turns passed: ' + turnCount);
         console.log('PlayerOne: ' + firstTurnPlayer.getHero().hitpoints + ' Player 2 : ' + secondTurnPlayer.getHero().hitpoints);
         console.log('Game stats were: ' + JSON.stringify(this.logger.gameData));
+
+        //Write game stats to file
+        writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
     }
     
     /*
@@ -130,8 +136,8 @@ export class Game {
                 //Attack opponents monsters first
                 if(monstersToAttack.length > 0) {
                     monster.attack(monstersToAttack[0]);
-                    opponent.getBoard().removeDeadCards();
-                    currentPlayer.getBoard().removeDeadCards();
+                    opponent.removeDeadCardsFromBoard();
+                    currentPlayer.removeDeadCardsFromBoard();
                 } else {
                     //If no monsters, attack opponent directly
                     monster.attack(opponent.getHero());
@@ -177,4 +183,18 @@ export class Game {
       
         return array;
       }
+
+    private determineWinner(player : Player, otherPlayer : Player) {
+        let winner = '';
+
+        if(player.isDead() && otherPlayer.isDead()) {
+            winner = this.logger.gameData.TIE;
+        } else if (player.isDead) {
+            winner = otherPlayer.name;
+        } else {
+            winner = player.name;
+        }
+
+        globalEvent.fire('winner_decided', {winner : winner});
+    }
 }
