@@ -12,6 +12,7 @@ export class VoodooDoctor extends MonsterCard implements PlayerModifier, Hitpoin
     constructor() {
         super("Voodoo Doctor", 1, 1, 2, CardType.None);
     }
+    
     setPlayer(player: Player): void {
         this.player = player;
     }

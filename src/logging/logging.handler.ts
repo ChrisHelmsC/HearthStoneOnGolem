@@ -82,6 +82,20 @@ export class LoggingHandler {
             this.gameData.playerStats[player.name].cardsDiscarded += discardedCards.length;
         })
 
+        globalEvent.on("cards_added_to_deck", event => {
+            const player : Player = event.data.player;
+            const cardsAdded : number = event.data.cardsAdded;
+
+            this.gameData.playerStats[player.name].cardsAddedToDeck += cardsAdded;
+        })
+
+        globalEvent.on("return_to_hand", event => {
+            const player : Player = event.data.player;
+            const numCardsReturned : number = event.data.cardsReturned;
+
+            this.gameData.playerStats[player.name].cardsReturnedToHand += numCardsReturned;
+        })
+
         globalEvent.on('monster_attacking', event => {
             const attacker : MonsterCard = event.data.attacker;
             const defender : Fighter = event.data.defender;
@@ -93,7 +107,7 @@ export class LoggingHandler {
             currentGameData.monsterDamageDone += attacker.totalDamage();
             currentGameData.monsterDamageTaken += defender.totalDamage();
 
-            console.log(attacker + ' is attacking ' + defender.name + ' for ' + attacker.totalDamage() + ' damage.' 
+            console.log(attacker.name + ' is attacking ' + defender.name + ' for ' + attacker.totalDamage() + ' damage. ' 
             + defender.name + " will do " + defender.totalDamage() + " to " + attacker.name + ".");
         });
 

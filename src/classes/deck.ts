@@ -66,4 +66,8 @@ export class Deck {
     public isEmpty() {
         return this.size() == 0;
     }
+
+    public shuffleInto(card : Card) {
+        this.cards.splice(Math.floor(Math.random() * this.cards.length), 0, card);
+    }
 }

@@ -39,6 +39,10 @@ export class DeckBuilder {
         if( card['setPlayer'] ) {
             card.setPlayer(this.player);
         }
+
+        if ( card['setOpponent']) {
+            card.setOpponent(this.enemy);
+        }
     }
 
     public createDeckFromString() : Array<Card> {

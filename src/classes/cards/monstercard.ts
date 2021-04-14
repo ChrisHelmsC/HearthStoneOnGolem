@@ -3,8 +3,9 @@ import { Card } from "./card";
 import { CardType } from "./cardtype";
 import { globalEvent } from "@billjs/event-emitter"
 
-export class MonsterCard extends Card implements Fighter {
+export class MonsterCard extends Card implements Fighter{
     hitpoints : number;
+    baseHitPoints : number;
     baseDamage : number;
     bonusDamage: number;
     type : CardType;
@@ -14,6 +15,7 @@ export class MonsterCard extends Card implements Fighter {
     constructor(name : string, cost : number, hitpoints : number, baseDamage : number, type : CardType) {
         super(name, cost);
         this.hitpoints = hitpoints;
+        this.baseHitPoints = hitpoints;
         this.baseDamage = baseDamage;
         this.type = type;
         this.fatigue = false;
@@ -84,5 +86,14 @@ export class MonsterCard extends Card implements Fighter {
 
     totalDamage(): number {
         return this.baseDamage + this.bonusDamage;
+    } 
+
+    isDamaged() : boolean {
+        return this.baseHitPoints != this.hitpoints;
+    }
+
+    //Adds costChange to current cards cost. Cost cannot go below 0
+    modifyCost(costChange : number) : void {
+        this.cost = Math.max(0, this.cost + costChange);
     }
 }

@@ -32,8 +32,8 @@ export class Game {
         this.logger = new LoggingHandler(playerOne, playerTwo);
 
         //Create and set decks from infile, shuffle for now
-        const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
-        //const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
+        //const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
+        const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
         const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
@@ -100,7 +100,7 @@ export class Game {
         console.log('Game stats were: ' + JSON.stringify(this.logger.gameData));
 
         //Write game stats to file
-        writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
+        //writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
     }
     
     /*
@@ -120,10 +120,26 @@ export class Game {
 
         // MAKE THIS A STRATEGY ****************************************************************** //
         //Play highest possible card in hand if possible
-        if(currentPlayer.getPlayableMonsterCards().length > 0) {
-            currentPlayer.playMonsterCard(currentPlayer.getPlayableMonsterCards()[0]);
-        } else {
-            console.log(currentPlayer.name + ' has no cards that can be played.');
+        while(currentPlayer.getPlayableMonsterCards().length > 0 || currentPlayer.getPlayableSpellCards().length > 0) {
+            if(currentPlayer.getPlayableMonsterCards().length > 0) {
+                currentPlayer.playMonsterCard(currentPlayer.getPlayableMonsterCards()[0]);
+            } else {
+                console.log(currentPlayer.name + ' has no monster cards that can be played.');
+            }
+
+            if(currentPlayer.getPlayableSpellCards().length > 0) {
+                const card = currentPlayer.getPlayableSpellCards()[0] as any;
+
+                //Need to prepare spell cards here
+                if(card['setTarget']) {
+                    card.setTarget(card.getTargetables()[0]);
+                }
+
+                currentPlayer.playSpellCard(card);
+                opponent.removeDeadCardsFromBoard();
+            } else {
+                console.log(currentPlayer.name + ' has no spells that can be played.');
+            }
         }
 
         //If monsters are on field for player, attack

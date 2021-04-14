@@ -5,6 +5,7 @@ import { Deck } from "./deck";
 import { Hero } from "./hero";
 import { globalEvent } from '@billjs/event-emitter'
 import { range } from "lodash";
+import { SpellCard } from "./cards/spellcard";
 
 export class Player {
     public  name : string;
@@ -94,10 +95,29 @@ export class Player {
             return card.cost < this.availableMana &&
                 card instanceof MonsterCard;
         }).sort((a, b) => {
-            return b.cost - a.cost;
+            return a.cost - b.cost;
         });
 
         return filteredCards as Array<MonsterCard>;
+    }
+
+    public getPlayableSpellCards() : Array<SpellCard> {
+        const filteredCards =  this.hand.filter((card) => {
+            return card.cost < this.availableMana &&
+                card instanceof SpellCard &&
+                card.canPlay();
+        }).sort((a, b) => {
+            return b.cost - a.cost;
+        });
+
+        return filteredCards as Array<SpellCard>;
+    }
+
+    public playSpellCard(card : SpellCard) {
+        //TODO this is duplicate code with monster card
+        card.play();
+        this.hand.splice(this.hand.indexOf(card), 1);
+        this.availableMana -= card.cost;
     }
 
     public playMonsterCard(card : MonsterCard) {
