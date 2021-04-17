@@ -114,6 +114,9 @@ export class Player {
     }
 
     public playSpellCard(card : SpellCard) {
+        globalEvent.fire("card_played", {player : this, card: card});
+        globalEvent.fire("spell_card_played", {player : this, card: card});
+
         //TODO this is duplicate code with monster card
         card.play();
         this.hand.splice(this.hand.indexOf(card), 1);

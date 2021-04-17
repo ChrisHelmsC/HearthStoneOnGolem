@@ -2,7 +2,7 @@ import { Card } from "../cards/card";
 import { MonsterCard } from "../cards/monstercard";
 import { SpellCard } from "../cards/spellcard";
 import { Player } from "../player";
-import { AttackingMove, Move, TargetMove } from "./move";
+import { AttackingMove, Move, PlayFromHandMove, TargetMove } from "./move";
 
 export class ValidMovesValidator {
     currentPlayer : Player;
@@ -22,7 +22,6 @@ export class ValidMovesValidator {
         // Get all valid moves on players board
         validMoves = validMoves.concat(this.getValidMovesOnBoard());
 
-        console.log('Valid moves contains #: ' + validMoves.length);
         return validMoves;
     }
 
@@ -36,19 +35,19 @@ export class ValidMovesValidator {
             if(currentCard['canPlay']) {
                 //If cant be played, dont allow it through filter
                 if(!currentCard.canPlay()) {
-                    console.log(card.name + " is not playable from hand because it failed a canPlay check");
+                    //console.log(card.name + " is not playable from hand because it failed a canPlay check");
                     return false;
                 }
             }
 
             //Check cards mana is okay compared to players remaining mana
             if(card.cost > this.currentPlayer.getAvailableMana()) {
-                console.log(card.name + " is not playable from hand because it costs too much.");
+                //console.log(card.name + " is not playable from hand because it costs too much.");
                 return false;
             }
 
             //Card is playable
-            console.log(card.name + " is playable from hand");
+            //console.log(card.name + " is playable from hand");
             return true;
         });
 
@@ -58,41 +57,25 @@ export class ValidMovesValidator {
 
             //If card is a targeter, create a move for each possible target
             const anyCard = card as any;
+            const targetMoveCount = 0;
             if(anyCard['setTarget']) { 
-                console.log(card.name + " is a targeter.");
                 //Get possible targets, create a move for each
                 anyCard.getTargetables().forEach((targetable : any) => {
-                    console.log("Setting " + card.name + "'s possible target as: " + targetable.name)
-
                     //Create move with card and target references
-                    playableMoves.push(new TargetMove(card, targetable,
+                    playableMoves.push(new PlayFromHandMove(this.currentPlayer, card, new TargetMove(card, targetable,
                         () => {
                             //Set card's target
-                            anyCard.setTarget(targetable)
-                            
-                            //Play the card
-                            if(card instanceof MonsterCard) {
-                                this.currentPlayer.playMonsterCard(card);
-                            } else if (card instanceof SpellCard) {
-                                this.currentPlayer.playSpellCard(card);
-                            }
+                            anyCard.setTarget(targetable) 
                         }
-                    ));
+                    )));
                 });
-
             } else {
                 //If card is not targeter, then just play it
-                console.log(card.name + " is not a targeter, setting up normally.");
-                playableMoves.push(new Move(() => {
-                    if(card instanceof MonsterCard) {
-                        this.currentPlayer.playMonsterCard(card);
-                    } else if (card instanceof SpellCard) {
-                        this.currentPlayer.playSpellCard(card);
-                    }
-                }));
+                playableMoves.push(new PlayFromHandMove(this.currentPlayer, card, null));
             }
         })
 
+        console.log("Number of playable moves in hand is: " + playableMoves.length);
         return playableMoves;
     }
 

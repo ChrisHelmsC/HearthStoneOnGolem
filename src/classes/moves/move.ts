@@ -1,5 +1,7 @@
 import { Card } from "../cards/card";
 import { MonsterCard } from "../cards/monstercard";
+import { SpellCard } from "../cards/spellcard";
+import { Player } from "../player";
 
 export class Move {
     make: (() => void);
@@ -24,10 +26,36 @@ export class TargetMove extends Move{
     }
 }
 
-//When attacking, some monsters trigger effects. Track with targeterMove
-export class AttackingMove extends Move {
+export class PlayFromHandMove extends Move {
     card : Card;
-    opponentCard : any;
+    targetMove : TargetMove;
+
+    constructor(currentPlayer : Player,  card : Card, targetMove : TargetMove) {
+        //Build combo move
+        const comboMove = () => {
+            //If targeter, set target
+            if(targetMove != null) targetMove.make();
+
+            //Play card / move monster to board
+            if(card instanceof MonsterCard) {
+                currentPlayer.playMonsterCard(card);
+            } else if (card instanceof SpellCard) {
+                currentPlayer.playSpellCard(card);
+            }
+        };
+        super(comboMove);
+
+        //TODO handle cards that target on being played, vs on attacking !!IMPORTANT
+        this.targetMove = this.targetMove;
+        this.card = card;
+    }
+}
+
+//When attacking, some monsters trigger effects. Track with targeterMove
+//TODO need to handle for heroes
+export class AttackingMove extends Move {
+    card : MonsterCard;
+    opponentCard : MonsterCard;
     targeterMove : TargetMove;
 
     constructor(card : MonsterCard, opponentCard : any, make : (() => void), targeterMove : TargetMove) {

@@ -176,5 +176,14 @@ export class LoggingHandler {
         globalEvent.on("final_turn_count", event => {
             this.gameData.turnsPlayed = event.data.turns;
         })
+
+        //Spell card played
+        globalEvent.on("spell_card_played", event => {
+            const player : Player = event.data.player;
+            const card = event.data.card;
+
+            this.gameData.playerStats[player.name].monstersPlayed += 1;
+            console.log(player.name + ' is playing spell: ' + card.name);
+        })
     }
 }

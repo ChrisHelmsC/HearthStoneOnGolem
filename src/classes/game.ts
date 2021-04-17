@@ -3,14 +3,15 @@ import { SpellCard } from "./cards/spellcard";
 import { Hero } from "./hero";
 import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
-import { fstat, readFileSync, writeFile, writeFileSync } from "fs";
+import { readFileSync} from "fs";
 import { InFileLayout } from "../util/in.file";
 import { LoggingHandler } from "../logging/logging.handler";
 import { globalEvent } from "@billjs/event-emitter"
 import { ValidMovesValidator } from "./moves/valid.moves.validator";
+import { SimpleStrategy } from "./strategy/simple.strategy.";
 
 //TODO check that mana is increased or not correctly at the beginning of match
-
+//TODO define manatokens effect
 export class Game {
     private readonly PLAYER_HEALTH = 5;
 
@@ -123,9 +124,11 @@ export class Game {
 
         const validator = new ValidMovesValidator(currentPlayer, opponent);
         let validMoves = validator.getValidMoves();
+        const playerStrategy = new SimpleStrategy();
         while(validMoves.length > 0) {
-            console.log(currentPlayer.name + "has a choice of " + validMoves.length + " valid moves");
-            validMoves[0].make();
+            //Get next best move from strategy and play it
+            playerStrategy.setPossibleMovies(validMoves);
+            playerStrategy.getNextMove().make();
 
             //Clear all dead monsters
             currentPlayer.getBoard().removeDeadCards();
@@ -134,9 +137,7 @@ export class Game {
             validMoves = validator.getValidMoves();
         }
 
-        //TODO Send moves to strategy to determine which one is played next
-
-        //Any left over monsters should attack hero
+        //Any left over monsters should attack hero (This will be fixed as moves shortly)
         if(currentPlayer.getBoard().getCards().length > 0) {
             //If opponent has monsters, attack them
             const attackingMonsters = currentPlayer.getBoard().getAttackReadyMonsters();
