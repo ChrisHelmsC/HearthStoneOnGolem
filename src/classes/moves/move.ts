@@ -34,7 +34,9 @@ export class AttackingMove extends Move {
         //Build combinned targerter and make (aka attack) function
         const comboMove = () => {
             make();
-            targeterMove.make();
+
+            //If targeting move is set, activate it
+            if(targeterMove != null) targeterMove.make();
         };
         super(comboMove);
 

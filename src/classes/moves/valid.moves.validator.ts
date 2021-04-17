@@ -99,19 +99,11 @@ export class ValidMovesValidator {
     private getValidMovesOnBoard() : Move[] {
         //Get list of playable cards on board
         const playableCards : MonsterCard[] = this.currentPlayer.getBoard().getCards().filter(card => {
-            //Check if instance of canPlay
-            const currentCard = card as any;
-            if(currentCard['canPlay']) {
-                //If cant be played, dont allow it through filter
-                if(!currentCard.canPlay()) {
-                    console.log(card.name + " is not playable from hand because it failed a canPlay check");
-                    return false;
-                }
-            }
             //Ensure monster is not fatigued or summoning sick
             if(!card.canAttack()) {
                 return false;
             }
+            console.log(card.name + " is playable on the board");
             return true;
         });
 
@@ -125,28 +117,35 @@ export class ValidMovesValidator {
             this.opponentPlayer.getBoard().getCards().forEach(enemyCard => {
                 
                 //Start by creating possible targeting movelist  if the monster is a targeter
-                const targetMoves : TargetMove[]= [];
+                let targetCount = 0;
                 if(anyCard['setTarget']) { 
                     console.log(card.name + " is a targeter.");
                     //Get possible targets, create a move for each
                     anyCard.getTargetables().forEach((targetable : any) => {
                         console.log("Setting " + card.name + "'s possible target as: " + targetable.name)
 
-                        //Add move to list of target moves
-                        targetMoves.push(new TargetMove(card, targetable,
-                            () => {
-                                //Set card's target
-                                anyCard.setTarget(targetable)
-                            }
+                        //Create targeting move
+                        const targetMove = new TargetMove(anyCard, enemyCard, (
+                            //Set card's target
+                            anyCard.setTarget(targetable)
                         ));
+
+                        //Create attacking move with this targeting move
+                        playableMoves.push(new AttackingMove(anyCard, enemyCard, () => {
+                            card.attack(enemyCard);
+                        }, targetMove))
+
+                        //Increase related counter
+                        targetCount++;
                     });
                 }
-                //Create attacking moves for this card against enemy card, with variations for targets
-                targetMoves.forEach(targetMove => {
+
+                //If card is not a targeter, just create a normal attacking move
+                if(targetCount <= 0) {
                     playableMoves.push(new AttackingMove(card, enemyCard, () => {
                         card.attack(enemyCard);
-                    }, targetMove))
-                })
+                    }, null))
+                }
             })
         }) 
 

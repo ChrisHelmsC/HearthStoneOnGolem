@@ -43,7 +43,7 @@ export class FanOfKnives extends SpellCard implements OpponentModifier, PlayerMo
 
         console.log(logString);
         this.player.drawCards(this.DRAW_AMOUNT)
-        console.log(this.name + " has caused " + this.player + " to draw " + this.DRAW_AMOUNT + " cards.");
+        console.log(this.name + " has caused " + this.player.name + " to draw " + this.DRAW_AMOUNT + " cards.");
         globalEvent.fire("cards_force_drawn", {player : this.player, affecter: this})
     }
 } 

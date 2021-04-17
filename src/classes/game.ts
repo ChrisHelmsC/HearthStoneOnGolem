@@ -121,57 +121,35 @@ export class Game {
         //Attempt to draw a card
         currentPlayer.drawCards(1);
 
-        //Get possible moves
-        new ValidMovesValidator(currentPlayer, opponent).getValidMoves();
+        const validator = new ValidMovesValidator(currentPlayer, opponent);
+        let validMoves = validator.getValidMoves();
+        while(validMoves.length > 0) {
+            console.log(currentPlayer.name + "has a choice of " + validMoves.length + " valid moves");
+            validMoves[0].make();
 
-        //Send moves to strategy to determine which one is played next
+            //Clear all dead monsters
+            currentPlayer.getBoard().removeDeadCards();
+            opponent.getBoard().removeDeadCards();
 
-        // MAKE THIS A STRATEGY ****************************************************************** //
-        //Play highest possible card in hand if possible
-        while(currentPlayer.getPlayableMonsterCards().length > 0 || currentPlayer.getPlayableSpellCards().length > 0) {
-            if(currentPlayer.getPlayableMonsterCards().length > 0) {
-                currentPlayer.playMonsterCard(currentPlayer.getPlayableMonsterCards()[0]);
-            } else {
-                console.log(currentPlayer.name + ' has no monster cards that can be played.');
-            }
-
-            if(currentPlayer.getPlayableSpellCards().length > 0) {
-                const card = currentPlayer.getPlayableSpellCards()[0] as any;
-
-                //Need to prepare spell cards here
-                if(card['setTarget']) {
-                    card.setTarget(card.getTargetables()[0]);
-                }
-
-                currentPlayer.playSpellCard(card);
-                opponent.removeDeadCardsFromBoard();
-            } else {
-                console.log(currentPlayer.name + ' has no spells that can be played.');
-            }
+            validMoves = validator.getValidMoves();
         }
 
-        //If monsters are on field for player, attack
+        //TODO Send moves to strategy to determine which one is played next
+
+        //Any left over monsters should attack hero
         if(currentPlayer.getBoard().getCards().length > 0) {
             //If opponent has monsters, attack them
             const attackingMonsters = currentPlayer.getBoard().getAttackReadyMonsters();
-            let monstersToAttack = opponent.getBoard().getCards();
 
             attackingMonsters.forEach((monster) => {
-                //Attack opponents monsters first
-                if(monstersToAttack.length > 0) {
-                    monster.attack(monstersToAttack[0]);
-                    opponent.removeDeadCardsFromBoard();
-                    currentPlayer.removeDeadCardsFromBoard();
-                } else {
                     //If no monsters, attack opponent directly
                     monster.attack(opponent.getHero());
-                }
-            });
+            })
         }
-        // MAKE THIS A STRATEGY ****************************************************************** //
 
-        //At the end of turn, remove summoning sickness for player's monsters
+        //At the end of turn, remove summoning sickness and fatigue for player's monsters
         currentPlayer.getBoard().removeAllSummonSick();
+        currentPlayer.getBoard().unFatigueAllMonsters();
     }
 
     private isAPlayerDead(){
