@@ -32,7 +32,7 @@ export class MonsterCard extends Card implements Fighter{
         this.takeDamage(defender.totalDamage())        
 
         //TODO Monster is now fatigued;
-        
+        this.fatigueThis();
     }
 
     public defend(attacker : Fighter) {

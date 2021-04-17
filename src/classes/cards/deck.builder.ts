@@ -2,6 +2,7 @@ import { Deck } from "../deck";
 import { Player } from "../player";
 import { Card } from "./card";
 import { CardMapper } from "./data/card.mapper";
+import { CardModifierHelper } from "./modifiers/modifier.helper";
 
 export class DeckBuilder {
     cardNames : string[];
@@ -26,23 +27,10 @@ export class DeckBuilder {
             createdCards.push(currentCard);
 
             //Handle any card preperations for effects
-            this.prepareCardModifiers(currentCard);
+            new CardModifierHelper(this.player, this.enemy, currentCard).prepareCardModifiers();
         });
 
         return new Deck(createdCards);
-    }
-
-    private prepareCardModifiers(card : any) {
-        //Better way to implement all of this?
-
-        //Check for player modifier
-        if( card['setPlayer'] ) {
-            card.setPlayer(this.player);
-        }
-
-        if ( card['setOpponent']) {
-            card.setOpponent(this.enemy);
-        }
     }
 
     public createDeckFromString() : Array<Card> {

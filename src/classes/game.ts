@@ -7,9 +7,12 @@ import { fstat, readFileSync, writeFile, writeFileSync } from "fs";
 import { InFileLayout } from "../util/in.file";
 import { LoggingHandler } from "../logging/logging.handler";
 import { globalEvent } from "@billjs/event-emitter"
+import { ValidMovesValidator } from "./moves/valid.moves.validator";
+
+//TODO check that mana is increased or not correctly at the beginning of match
 
 export class Game {
-    private readonly PLAYER_HEALTH = 25;
+    private readonly PLAYER_HEALTH = 5;
 
     players : Array<Player>;
     logger : LoggingHandler;
@@ -117,6 +120,11 @@ export class Game {
 
         //Attempt to draw a card
         currentPlayer.drawCards(1);
+
+        //Get possible moves
+        new ValidMovesValidator(currentPlayer, opponent).getValidMoves();
+
+        //Send moves to strategy to determine which one is played next
 
         // MAKE THIS A STRATEGY ****************************************************************** //
         //Play highest possible card in hand if possible
