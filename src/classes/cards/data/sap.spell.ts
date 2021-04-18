@@ -5,8 +5,9 @@ import { SpellCard } from "../spellcard"
 import { Targeter } from "../targeters/undamaged.targeter";
 import { OpponentModifier } from "../modifiers/opponenet.modifier";
 import { globalEvent } from "@billjs/event-emitter";
+import { CanPlay } from "../utils/can.play";
 
-export class Sap extends SpellCard implements Targeter<MonsterCard, Board>, OpponentModifier {
+export class Sap extends SpellCard implements Targeter<MonsterCard, Board>, OpponentModifier, CanPlay {
     target: MonsterCard;
     opponent: Player;
 

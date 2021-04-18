@@ -3,12 +3,14 @@ import { SpellCard } from "./cards/spellcard";
 import { Hero } from "./hero";
 import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
-import { readFileSync} from "fs";
+import { readFileSync, writeFileSync} from "fs";
 import { InFileLayout } from "../util/in.file";
 import { LoggingHandler } from "../logging/logging.handler";
 import { globalEvent } from "@billjs/event-emitter"
 import { ValidMovesValidator } from "./moves/valid.moves.validator";
 import { SimpleStrategy } from "./strategy/simple.strategy.";
+import { ManaToken } from "./cards/data/mana.token";
+import { CardModifierHelper } from "./cards/modifiers/modifier.helper";
 
 //TODO check that mana is increased or not correctly at the beginning of match
 //TODO define manatokens effect
@@ -36,8 +38,8 @@ export class Game {
         this.logger = new LoggingHandler(playerOne, playerTwo);
 
         //Create and set decks from infile, shuffle for now
-        //const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
-        const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
+        const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
+        //const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
         const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
@@ -59,13 +61,12 @@ export class Game {
 
         //Second turn player get 4 cards and the mana token
         secondTurnPlayer.drawCards(4);
-        secondTurnPlayer.addCardToHand(new SpellCard('Mana Token', 0))
+        secondTurnPlayer.addCardToHand(this.createManaToken(secondTurnPlayer, firstTurnPlayer));
         console.log('Hand: ' + new CardWriter(secondTurnPlayer.getHand()).createCardString());
 
         //Players take turns until one dies 
         console.log('\n!!!!!!!!!!!!!! Starting a match !!!!!!!!!!!!!\n');
         let turnCount = 1;
-
         while(turnCount < 300) {
             turnCount++;
             //Let first player take their turn
@@ -97,14 +98,14 @@ export class Game {
         //Winner is determined
         this.determineWinner(playerOne, playerTwo);
 
-        //Info logged
+        //Log final info
         console.log('A player has died');
         console.log('Turns passed: ' + turnCount);
         console.log('PlayerOne: ' + firstTurnPlayer.getHero().hitpoints + ' Player 2 : ' + secondTurnPlayer.getHero().hitpoints);
         console.log('Game stats were: ' + JSON.stringify(this.logger.gameData));
 
-        //Write game stats to file
-        //writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
+        //Write game stats to file for requestor pickup
+        writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
     }
     
     /*
@@ -200,4 +201,12 @@ export class Game {
 
         globalEvent.fire('winner_decided', {winner : winner});
     }
+
+    //Creates and prepares the mana token (TODO: eww)
+    private createManaToken(player : Player, opponent : Player) : ManaToken {
+        const token = new ManaToken();
+        new CardModifierHelper(player, opponent, token).prepareCardModifiers();
+        return token;
+    }
+    adad
 }

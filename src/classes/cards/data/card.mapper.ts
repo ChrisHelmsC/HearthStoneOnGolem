@@ -11,6 +11,7 @@ import { GangUp } from "./gang.up.spell";
 import { GurubashiBerserker } from "./gurubashi.berserker.card";
 import { KoboldGeomancer } from "./kobold.geomancer.card";
 import { LootHoarder } from "./loot.hoarder.card";
+import { ManaToken } from "./mana.token";
 import { MurlocRaider } from "./murloc.raider.card";
 import { Sap } from "./sap.spell";
 import { Shadowstep } from "./shadowstep.spell";
@@ -44,6 +45,7 @@ export class CardMapper {
         this.allCards[GangUp.name] = () => {return new GangUp()}
         this.allCards[Sap.name] = () => {return new Sap()}
         this.allCards[FanOfKnives.name] = () => {return new FanOfKnives()}
+        this.allCards[ManaToken.name] = () => {return new ManaToken()}
     }
 
     public getCardFromClass(cardName : string) : Card {
