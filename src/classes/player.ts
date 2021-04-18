@@ -6,6 +6,7 @@ import { Hero } from "./hero";
 import { globalEvent } from '@billjs/event-emitter'
 import { range } from "lodash";
 import { SpellCard } from "./cards/spellcard";
+import { Fighter } from "./fighter";
 
 export class Player {
     public  name : string;
@@ -192,6 +193,19 @@ export class Player {
 
     public getNoCardDamage() {
         return this.noCardDamage;
+    }
+
+    //Returns all entities related to this player that can be attacked (todo gross)
+    public getAttackables() : Fighter[] {
+        const attackables : Fighter[] = [];
+
+        //Get all this players cards on board
+        attackables.concat(this.getBoard().getCards());
+
+        //Get this hero
+        attackables.push(this.hero);
+
+        return attackables;
     }
 
     //Handles mana reset and increase at beginning of turn

@@ -38,8 +38,8 @@ export class Game {
         this.logger = new LoggingHandler(playerOne, playerTwo);
 
         //Create and set decks from infile, shuffle for now
-        const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
-        //const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
+        //const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
+        const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
         const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
@@ -105,7 +105,7 @@ export class Game {
         console.log('Game stats were: ' + JSON.stringify(this.logger.gameData));
 
         //Write game stats to file for requestor pickup
-        writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
+        //writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
     }
     
     /*
@@ -139,15 +139,15 @@ export class Game {
         }
 
         //Any left over monsters should attack hero (This will be fixed as moves shortly)
-        if(currentPlayer.getBoard().getCards().length > 0) {
-            //If opponent has monsters, attack them
-            const attackingMonsters = currentPlayer.getBoard().getAttackReadyMonsters();
+        // if(currentPlayer.getBoard().getCards().length > 0) {
+        //     //If opponent has monsters, attack them
+        //     const attackingMonsters = currentPlayer.getBoard().getAttackReadyMonsters();
 
-            attackingMonsters.forEach((monster) => {
-                    //If no monsters, attack opponent directly
-                    monster.attack(opponent.getHero());
-            })
-        }
+        //     attackingMonsters.forEach((monster) => {
+        //             //If no monsters, attack opponent directly
+        //             monster.attack(opponent.getHero());
+        //     })
+        // }
 
         //At the end of turn, remove summoning sickness and fatigue for player's monsters
         currentPlayer.getBoard().removeAllSummonSick();
@@ -208,5 +208,4 @@ export class Game {
         new CardModifierHelper(player, opponent, token).prepareCardModifiers();
         return token;
     }
-    adad
 }

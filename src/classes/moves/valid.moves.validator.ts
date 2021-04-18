@@ -97,7 +97,7 @@ export class ValidMovesValidator {
 
             //Create a move to represent an attack on each enemy
             //TODO: handle taunts
-            this.opponentPlayer.getBoard().getCards().forEach(enemyCard => {
+            this.opponentPlayer.getAttackables().forEach(attackables => {
                 
                 //Start by creating possible targeting movelist  if the monster is a targeter
                 let targetCount = 0;
@@ -108,14 +108,14 @@ export class ValidMovesValidator {
                         console.log("Setting " + card.name + "'s possible target as: " + targetable.name)
 
                         //Create targeting move
-                        const targetMove = new TargetMove(anyCard, enemyCard, (
+                        const targetMove = new TargetMove(anyCard, attackables, (
                             //Set card's target
                             anyCard.setTarget(targetable)
                         ));
 
                         //Create attacking move with this targeting move
-                        playableMoves.push(new AttackingMove(anyCard, enemyCard, () => {
-                            card.attack(enemyCard);
+                        playableMoves.push(new AttackingMove(anyCard, attackables, () => {
+                            card.attack(attackables);
                         }, targetMove))
 
                         //Increase related counter
@@ -125,8 +125,8 @@ export class ValidMovesValidator {
 
                 //If card is not a targeter, just create a normal attacking move
                 if(targetCount <= 0) {
-                    playableMoves.push(new AttackingMove(card, enemyCard, () => {
-                        card.attack(enemyCard);
+                    playableMoves.push(new AttackingMove(card, attackables, () => {
+                        card.attack(attackables);
                     }, null))
                 }
             })
