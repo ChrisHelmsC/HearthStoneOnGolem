@@ -11,11 +11,12 @@ import { ValidMovesValidator } from "./moves/valid.moves.validator";
 import { SimpleStrategy } from "./strategy/simple.strategy.";
 import { ManaToken } from "./cards/data/mana.token";
 import { CardModifierHelper } from "./cards/modifiers/modifier.helper";
+import { DumbStrategy } from "./strategy/dumb.strategy";
 
 //TODO check that mana is increased or not correctly at the beginning of match
 //TODO define manatokens effect
 export class Game {
-    private readonly PLAYER_HEALTH = 5;
+    private readonly PLAYER_HEALTH = 30;
 
     players : Array<Player>;
     logger : LoggingHandler;
@@ -44,6 +45,10 @@ export class Game {
         playerOne.setDeck(deckOne);
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
         playerTwo.setDeck(deckTwo);
+
+        //Set player strategies
+        playerOne.setStrategy(new SimpleStrategy());
+        playerTwo.setStrategy(new DumbStrategy());
 
         this.players.push(playerOne);
         this.players.push(playerTwo);
@@ -101,7 +106,7 @@ export class Game {
         //Log final info
         console.log('A player has died');
         console.log('Turns passed: ' + turnCount);
-        console.log('PlayerOne: ' + firstTurnPlayer.getHero().hitpoints + ' Player 2 : ' + secondTurnPlayer.getHero().hitpoints);
+        console.log('PlayerOne: ' + playerOne.getHero().hitpoints + ' PlayerTwo : ' + playerTwo.getHero().hitpoints);
         console.log('Game stats were: ' + JSON.stringify(this.logger.gameData));
 
         //Write game stats to file for requestor pickup
@@ -135,19 +140,11 @@ export class Game {
             currentPlayer.getBoard().removeDeadCards();
             opponent.getBoard().removeDeadCards();
 
+            //Check if player died
+            if(this.isAPlayerDead()) break;
+
             validMoves = validator.getValidMoves();
         }
-
-        //Any left over monsters should attack hero (This will be fixed as moves shortly)
-        // if(currentPlayer.getBoard().getCards().length > 0) {
-        //     //If opponent has monsters, attack them
-        //     const attackingMonsters = currentPlayer.getBoard().getAttackReadyMonsters();
-
-        //     attackingMonsters.forEach((monster) => {
-        //             //If no monsters, attack opponent directly
-        //             monster.attack(opponent.getHero());
-        //     })
-        // }
 
         //At the end of turn, remove summoning sickness and fatigue for player's monsters
         currentPlayer.getBoard().removeAllSummonSick();
@@ -193,7 +190,7 @@ export class Game {
 
         if(player.isDead() && otherPlayer.isDead()) {
             winner = this.logger.gameData.TIE;
-        } else if (player.isDead) {
+        } else if (player.isDead()) {
             winner = otherPlayer.name;
         } else {
             winner = player.name;

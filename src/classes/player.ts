@@ -7,6 +7,7 @@ import { globalEvent } from '@billjs/event-emitter'
 import { range } from "lodash";
 import { SpellCard } from "./cards/spellcard";
 import { Fighter } from "./fighter";
+import { Strategy } from "./strategy/strategy";
 
 export class Player {
     public  name : string;
@@ -18,6 +19,7 @@ export class Player {
     private availableMana : number;
     private spellDamage : number;
     private noCardDamage : number;
+    private strategy : Strategy;
 
     constructor(name : string, hero : Hero, totalMana : number, spellDamage : number, noCardDamage : number) {
         this.name = name;
@@ -227,5 +229,13 @@ export class Player {
         const deadCards = this.board.removeDeadCards();
 
         globalEvent.fire("monster_died", {player: this, deadCards: deadCards});
+    }
+
+    public getStrategy() {
+        return this.strategy;
+    }
+
+    public setStrategy(strategy : Strategy) {
+        this.strategy = strategy;
     }
 }
