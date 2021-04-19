@@ -36,8 +36,8 @@ export class Game {
         const playerTwo = new Player('PlayerTwo', heroTwo, 1, 0, 0)
 
         //Create and set decks from infile, shuffle for now
-        //const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
-        const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
+        const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
+        //const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
         const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
@@ -116,7 +116,7 @@ export class Game {
         console.log('Game stats were: ' + JSON.stringify(this.logger.gameData));
 
         //Write game stats to file for requestor pickup
-        //writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
+        writeFileSync('/golem/output/gamestats.json', JSON.stringify(this.logger.gameData));
     }
     
     /*
