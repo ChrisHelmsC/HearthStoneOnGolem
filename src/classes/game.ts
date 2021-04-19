@@ -143,8 +143,8 @@ export class Game {
             playerStrategy.getNextMove().make();
 
             //Clear all dead monsters
-            currentPlayer.getBoard().removeDeadCards();
-            opponent.getBoard().removeDeadCards();
+            currentPlayer.removeDeadCardsFromBoard();
+            opponent.removeDeadCardsFromBoard();
 
             //Check if player died
             if(this.isAPlayerDead()) break;

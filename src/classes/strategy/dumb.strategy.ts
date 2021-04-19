@@ -12,8 +12,8 @@ export class DumbStrategy implements Strategy{
     //TODO need to create  CardPlayingMove
     //TODO add lines to prioritize playing new cards first
     getNextMove(): Move {
-        //Otherwise, return first more
-        return this.moves[0];
+        //Otherwise, return random
+        return this.moves[Math.floor(Math.random() * this.moves.length)];
     }
     
 }

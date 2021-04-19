@@ -199,10 +199,10 @@ export class Player {
 
     //Returns all entities related to this player that can be attacked (todo gross)
     public getAttackables() : Fighter[] {
-        const attackables : Fighter[] = [];
+        let attackables : Fighter[] = [];
 
         //Get all this players cards on board
-        attackables.concat(this.getBoard().getCards());
+        attackables = attackables.concat(this.getBoard().getCards());
 
         //Get this hero
         attackables.push(this.hero);

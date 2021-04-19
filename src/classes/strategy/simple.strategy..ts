@@ -30,8 +30,8 @@ export class SimpleStrategy implements Strategy{
             }
         })
 
-        //Otherwise, return first more
-        return this.moves[0];
+        //Otherwise, return random move
+        return this.moves[Math.floor(Math.random() * this.moves.length)];
     }
     
 }

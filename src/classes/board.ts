@@ -20,7 +20,8 @@ export class Board {
         this.cards.forEach((card) => {
             if(card.isDead()) {
                 console.log(card.name + ' is dead and is being removed from the board.');
-                removedCards.push(this.cards.splice(this.cards.indexOf(card), 1)[0]);
+                this.cards.splice(this.cards.indexOf(card), 1);
+                removedCards.push(card);
             }
         })
 

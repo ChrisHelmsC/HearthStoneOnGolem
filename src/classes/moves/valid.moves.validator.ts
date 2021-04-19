@@ -98,7 +98,7 @@ export class ValidMovesValidator {
             //Create a move to represent an attack on each enemy
             //TODO: handle taunts
             this.opponentPlayer.getAttackables().forEach(attackables => {
-                
+
                 //Start by creating possible targeting movelist  if the monster is a targeter
                 let targetCount = 0;
                 if(anyCard['setTarget']) { 
