@@ -3,6 +3,7 @@ import { AttackingMove, Move } from "../moves/move";
 import { Strategy } from "./strategy";
 
 export class SimpleStrategy implements Strategy{
+    name: string = "SimpleStrategy";
     moves: Move[];
 
     setPossibleMovies(moves: Move[]): void {

@@ -18,8 +18,8 @@ export class LoggingHandler {
     constructor(playerOne : Player, playerTwo : Player) {
         //Add stats for reference by player name
         this.gameData = new GameData();
-        this.gameData.playerStats[playerOne.name] = new PlayerStats();
-        this.gameData.playerStats[playerTwo.name] = new PlayerStats();
+        this.gameData.playerStats[playerOne.name] = new PlayerStats(playerOne);
+        this.gameData.playerStats[playerTwo.name] = new PlayerStats(playerTwo);
 
         //Any time a player takes their turn, track it for context
         globalEvent.on('begin_turn', event => {

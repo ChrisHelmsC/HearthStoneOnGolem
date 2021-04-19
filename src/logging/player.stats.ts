@@ -1,4 +1,9 @@
+import { Player } from "../classes/player";
+
 export class PlayerStats {
+    //Details on player
+    strategy  : string = '';
+
     //Structure storing play stat details
     cardsNaturallyDrawn : number = 0; // Done
     cardsForceDrawn : number = 0; // Done
@@ -30,4 +35,8 @@ export class PlayerStats {
 
     manaAvailable : number = 0; //Done
     manaUsed : number = 0; // Done
+
+    constructor(player : Player) {
+        this.strategy = player.getStrategy().name;
+    }
 }

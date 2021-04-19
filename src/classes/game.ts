@@ -1,5 +1,4 @@
 import { DeckBuilder } from "./cards/deck.builder";
-import { SpellCard } from "./cards/spellcard";
 import { Hero } from "./hero";
 import { Player } from "./player";
 import { CardWriter } from "./util/cardwriter";
@@ -11,7 +10,8 @@ import { ValidMovesValidator } from "./moves/valid.moves.validator";
 import { SimpleStrategy } from "./strategy/simple.strategy.";
 import { ManaToken } from "./cards/data/mana.token";
 import { CardModifierHelper } from "./cards/modifiers/modifier.helper";
-import { DumbStrategy } from "./strategy/dumb.strategy";
+import { StrategyMapper } from "./strategy/strategy.mapper";
+import { GameData } from "../logging/game.data";
 
 //TODO check that mana is increased or not correctly at the beginning of match
 //TODO define manatokens effect
@@ -35,9 +35,6 @@ export class Game {
         const playerOne = new Player('PlayerOne', heroOne, 1, 0, 0)
         const playerTwo = new Player('PlayerTwo', heroTwo, 1, 0, 0)
 
-        //Create the logger for tracking game stats
-        this.logger = new LoggingHandler(playerOne, playerTwo);
-
         //Create and set decks from infile, shuffle for now
         //const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
         const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
@@ -46,20 +43,27 @@ export class Game {
         const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
         playerTwo.setDeck(deckTwo);
 
-        //Set player strategies
-        playerOne.setStrategy(new SimpleStrategy());
-        playerTwo.setStrategy(new DumbStrategy());
+        //Set player strategies from infile
+        const strategyMapper : StrategyMapper = new StrategyMapper();
+        playerOne.setStrategy(strategyMapper.getStrategyFromClass(inFile.player1.strategy));
+        playerTwo.setStrategy(strategyMapper.getStrategyFromClass(inFile.player2.strategy));
 
+        //Add players to overall players array
         this.players.push(playerOne);
         this.players.push(playerTwo);
 
+        //List out deck contents into console
         console.log(playerOne.name + ' Deck: \n' + new CardWriter(playerOne.getDeck().getCards()).createCardString());
         console.log(playerTwo.name + ' Deck: \n' + new CardWriter(playerTwo.getDeck().getCards()).createCardString());
+
+        //Create the logger for tracking game stats
+        this.logger = new LoggingHandler(playerOne, playerTwo);
 
         //Determine which player goes first, which goes second
         const firstTurnPlayer = this.players[Math.floor(Math.random() * this.players.length)]
         const secondTurnPlayer = firstTurnPlayer == playerOne ? playerTwo : playerOne;
         console.log(firstTurnPlayer.name + ' will have the first turn, ' + secondTurnPlayer.name + ' will start with the coin.');
+        
         //First turn player gets 3 cards
         firstTurnPlayer.drawCards(3);
         console.log('Hand: ' + new CardWriter(firstTurnPlayer.getHand()).createCardString());
@@ -71,12 +75,13 @@ export class Game {
 
         //Players take turns until one dies 
         console.log('\n!!!!!!!!!!!!!! Starting a match !!!!!!!!!!!!!\n');
-        let turnCount = 1;
+        let turnCount = 0;
         while(turnCount < 300) {
             turnCount++;
             //Let first player take their turn
             this.takeTurn(firstTurnPlayer, secondTurnPlayer);
 
+            //Print out statuses
             this.printPlayerStatus(firstTurnPlayer);
             this.printPlayerStatus(secondTurnPlayer);
 
@@ -88,6 +93,7 @@ export class Game {
             //Let second player take turn
             this.takeTurn(secondTurnPlayer, firstTurnPlayer);
 
+            //Print out statuses
             this.printPlayerStatus(secondTurnPlayer);
             this.printPlayerStatus(firstTurnPlayer);
 
@@ -189,7 +195,7 @@ export class Game {
         let winner = '';
 
         if(player.isDead() && otherPlayer.isDead()) {
-            winner = this.logger.gameData.TIE;
+            winner = GameData.TIE;
         } else if (player.isDead()) {
             winner = otherPlayer.name;
         } else {

@@ -2,6 +2,7 @@ import { Move } from "../moves/move";
 import { Strategy } from "./strategy";
 
 export class DumbStrategy implements Strategy{
+    name : string = "DumbStrategy";
     moves: Move[];
 
     setPossibleMovies(moves: Move[]): void {
