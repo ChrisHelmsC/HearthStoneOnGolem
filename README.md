@@ -37,5 +37,11 @@ Output is written at the end of the simulation in the form of a **GameData Objec
 Logging for actions and events during the game is writtent to standard output.
 
 ## Cards
+Cards are a component of the data used to play a game. All the cards that can be used in the simulation are defined in `src/classes/cards/data/`. When referring to cards on the InFile the user must use the class name of the card, not the card's name property. Addtional cards will be created for use over time, and will be added here as well.
 
 ## Strategy Definition
+Strategies are the brains behind making moves in the application. Two basic strategies have been defined already:
+* DumbStrategy - plays a random move.
+* SimpleStrategy - will attempt to attack monster that can be killed without losing a monster of its own, and will prioritize attacking the enemy Hero if they can be killed in the current move.
+
+These pre-defined strategies only serve as examples, additional strategies should be developed for more granular control over decisions involving your deck. Strategies should implement the Strategy interface, which requires them to implement a few simple but powerful methods. In short, the simulator will pass a list of possible "moves" to the strategy, and it should return the move it determines is the best for the current situation. After the move is played, the strategy will be passed another move, and this cycle will continue until the player has run out of possible moves and ends their turn.
