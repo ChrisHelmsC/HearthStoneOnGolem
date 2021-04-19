@@ -11,7 +11,7 @@
 * Strategy Definition
 
 ## Introduction
-**This project is designed to be run on the Golem Network (https://www.golem.network) as a provider image and references file paths specific to the Golem project. It can be run as a standalone project with some modifications, but its recommended use is through the associated Golem requestor script, located at https://github.com/ChrisHelmsC/hsog-requester. Non-developers should refer to this repository and avoid using this application directly.**
+**This project is designed to be run on the Golem Network (https://www.golem.network) as a provider image and references file paths specific to the Golem project. It can be run as a standalone project with some modifications, but its recommended use is through the associated Golem requestor script, located at https://github.com/ChrisHelmsC/hsog-requester. Non-developers should refer to the requestor repository and avoid using this application directly.**
 
 HearthStoneSimulationsOnGolem is a Node JS application designed to simulate a single game of HearthStone, a popular card game created by Blizzard. An input file is provided to the application detailing data to be used in the game, including the deck composition and strategy for each player to use. The game is simulated using these details and returns a list of statistics, including the overall winner, damage done, cards played, and more. The application additionally writes out logging which provides insight into each move made within the game.
 
@@ -33,3 +33,9 @@ At the time of writing, an infile should contain:
   * The strategy class name to use when playing these cards. Strategies are defined in `src/classes/strategy/`.
 
 ## Output
+Output is written at the end of the simulation in the form of a **GameData Object** using a JSON format. This object includes a number of useful stats collected over the course of the game for both players. The location of this clas within the project is `src/logging/game.data.ts`.
+Logging for actions and events during the game is writtent to standard output.
+
+## Cards
+
+## Strategy Definition
