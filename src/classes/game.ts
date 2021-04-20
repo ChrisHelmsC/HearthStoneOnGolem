@@ -38,9 +38,9 @@ export class Game {
         //Create and set decks from infile, shuffle for now
         const inFile : InFileLayout = JSON.parse(readFileSync('/golem/input/in.file.json', 'utf-8'));
         //const inFile : InFileLayout = JSON.parse(readFileSync('./in.file.json', 'utf-8'));
-        const deckOne = new DeckBuilder(this.shuffle(inFile.player1.deck), playerOne, playerTwo).getAsDeck();
+        const deckOne = new DeckBuilder(inFile.player1.deck, playerOne, playerTwo).getAsDeck();
         playerOne.setDeck(deckOne);
-        const deckTwo = new DeckBuilder(this.shuffle(inFile.player2.deck), playerTwo, playerOne).getAsDeck();
+        const deckTwo = new DeckBuilder(inFile.player2.deck, playerTwo, playerOne).getAsDeck();
         playerTwo.setDeck(deckTwo);
 
         //Set player strategies from infile
@@ -139,7 +139,7 @@ export class Game {
         const playerStrategy = new SimpleStrategy();
         while(validMoves.length > 0) {
             //Get next best move from strategy and play it
-            playerStrategy.setPossibleMovies(validMoves);
+            playerStrategy.setPossibleMovies(currentPlayer, opponent, validMoves);
             playerStrategy.getNextMove().make();
 
             //Clear all dead monsters
@@ -170,26 +170,6 @@ export class Game {
         console.log('Hand: ' + new CardWriter(player.getHand()).createCardString());
         console.log('Deck: ' + new CardWriter(player.getDeck().getCards()).createCardString());
     }
-
-    //Temporary shuffle while decks are made locally
-    private shuffle(array : Array<any>) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
-      
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-      
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-      
-          // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
-      
-        return array;
-      }
 
     private determineWinner(player : Player, otherPlayer : Player) {
         let winner = '';

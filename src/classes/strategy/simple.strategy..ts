@@ -1,12 +1,13 @@
 import { Hero } from "../hero";
 import { AttackingMove, Move } from "../moves/move";
+import { Player } from "../player";
 import { Strategy } from "./strategy";
 
 export class SimpleStrategy implements Strategy{
     name: string = "SimpleStrategy";
     moves: Move[];
 
-    setPossibleMovies(moves: Move[]): void {
+    setPossibleMovies(player : Player, opponent : Player, moves: Move[]): void {
         this.moves = moves;
     }
 
