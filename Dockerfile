@@ -13,6 +13,3 @@ COPY . .
 
 #Compile typescript to JS
 RUN npm run build
-
-#Temporary file copy to in volume
-COPY ./in.file.json /golem/input
